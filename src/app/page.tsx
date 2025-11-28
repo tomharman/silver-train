@@ -6,6 +6,7 @@ import transactionsData from "@/data/transactions.json";
 interface Transaction {
   recipient: string;
   amount: number;
+  timestamp: string;
 }
 
 type FilterType = "all" | "inbound" | "outbound";
@@ -23,6 +24,13 @@ export default function Home() {
   const formatAmount = (amount: number) => {
     const formatted = Math.abs(amount).toFixed(2);
     return amount >= 0 ? `+$${formatted}` : `-$${formatted}`;
+  };
+
+  const formatDate = (timestamp: string) => {
+    const date = new Date(timestamp);
+    const month = date.toLocaleDateString("en-US", { month: "short" });
+    const day = date.getDate();
+    return `${month} ${day}`;
   };
 
   return (
@@ -76,13 +84,16 @@ export default function Home() {
               {filteredTransactions.map((transaction, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between px-6 py-4 transition-colors hover:bg-neutral-50"
+                  className="flex items-center gap-4 px-6 py-4 transition-colors hover:bg-neutral-50"
                 >
-                  <span className="text-sm font-medium text-neutral-900">
+                  <span className="text-xs font-medium text-neutral-500 w-12 flex-shrink-0">
+                    {formatDate(transaction.timestamp)}
+                  </span>
+                  <span className="text-sm font-medium text-neutral-900 flex-grow">
                     {transaction.recipient}
                   </span>
                   <span
-                    className={`text-sm font-semibold tabular-nums ${
+                    className={`text-sm font-semibold tabular-nums flex-shrink-0 ${
                       transaction.amount >= 0
                         ? "text-green-600"
                         : "text-neutral-700"
