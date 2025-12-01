@@ -31,10 +31,6 @@ function TransactionChart({ transactions }: { transactions: Transaction[] }) {
     (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
   );
 
-  // Separate into inbound and outbound transactions
-  const inboundTransactions = sortedTransactions.filter((t) => t.amount > 0);
-  const outboundTransactions = sortedTransactions.filter((t) => t.amount < 0);
-
   // Calculate scales using all transactions
   const amounts = sortedTransactions.map((t) => t.amount);
   const maxAmount = Math.max(...amounts);
@@ -46,38 +42,33 @@ function TransactionChart({ transactions }: { transactions: Transaction[] }) {
   const yMin = minAmount - amountRange * 0.1;
   const yRange = yMax - yMin;
 
-  // Helper function to generate points for a set of transactions
-  const generatePoints = (transactionList: Transaction[]) => {
-    return transactionList.map((transaction) => {
-      const timestamp = new Date(transaction.timestamp).getTime();
-      const minTimestamp = new Date(sortedTransactions[0].timestamp).getTime();
-      const maxTimestamp = new Date(sortedTransactions[sortedTransactions.length - 1].timestamp).getTime();
-      const timeRange = maxTimestamp - minTimestamp;
-
-      const x = padding.left + ((timestamp - minTimestamp) / timeRange) * chartWidth;
-      const y = padding.top + chartHeight - ((transaction.amount - yMin) / yRange) * chartHeight;
-      return { x, y, amount: transaction.amount, timestamp };
-    });
-  };
-
-  // Generate points for each line
-  const inboundPoints = inboundTransactions.length > 0 ? generatePoints(inboundTransactions) : [];
-  const outboundPoints = outboundTransactions.length > 0 ? generatePoints(outboundTransactions) : [];
-
-  // Generate line paths
-  const inboundPath = inboundPoints.length > 0
-    ? inboundPoints.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" ")
-    : "";
-
-  const outboundPath = outboundPoints.length > 0
-    ? outboundPoints.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" ")
-    : "";
-
-  // All points for rendering circles
-  const allPoints = [...inboundPoints, ...outboundPoints];
-
   // Calculate zero line position
   const zeroY = padding.top + chartHeight - ((0 - yMin) / yRange) * chartHeight;
+
+  // Calculate bar width and spacing
+  const barSpacing = 2;
+  const barWidth = Math.max(
+    4,
+    Math.min(20, (chartWidth - (sortedTransactions.length - 1) * barSpacing) / sortedTransactions.length)
+  );
+
+  // Generate bars
+  const bars = sortedTransactions.map((transaction, index) => {
+    const x = padding.left + (index * (chartWidth / sortedTransactions.length)) + (chartWidth / sortedTransactions.length - barWidth) / 2;
+    const amount = transaction.amount;
+
+    // For positive amounts, bar goes from zero line up
+    // For negative amounts, bar goes from zero line down
+    if (amount >= 0) {
+      const barHeight = ((amount - 0) / yRange) * chartHeight;
+      const y = zeroY - barHeight;
+      return { x, y, width: barWidth, height: barHeight, amount, isPositive: true };
+    } else {
+      const barHeight = ((0 - amount) / yRange) * chartHeight;
+      const y = zeroY;
+      return { x, y, width: barWidth, height: barHeight, amount, isPositive: false };
+    }
+  });
 
   // Format currency for y-axis
   const formatCurrency = (value: number) => {
@@ -133,41 +124,22 @@ function TransactionChart({ transactions }: { transactions: Transaction[] }) {
           />
         )}
 
-        {/* Inbound line (using chart-1) */}
-        {inboundPath && (
-          <path
-            d={inboundPath}
-            fill="none"
-            className="stroke-chart-1"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{ filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))' }}
-          />
-        )}
-
-        {/* Outbound line (using chart-2) */}
-        {outboundPath && (
-          <path
-            d={outboundPath}
-            fill="none"
-            className="stroke-chart-2"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{ filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))' }}
-          />
-        )}
-
-        {/* Data points */}
-        {allPoints.map((point, index) => (
-          <circle
+        {/* Bars */}
+        {bars.map((bar, index) => (
+          <rect
             key={index}
-            cx={point.x}
-            cy={point.y}
-            r="3"
-            className={point.amount >= 0 ? "fill-chart-1" : "fill-chart-2"}
-            opacity="0.8"
+            x={bar.x}
+            y={bar.y}
+            width={bar.width}
+            height={bar.height}
+            className={bar.isPositive ? "fill-green-600" : "fill-neutral-700"}
+            rx="2"
+            opacity="0.9"
+            style={{
+              transition: 'opacity 0.2s',
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+            onMouseLeave={(e) => e.currentTarget.style.opacity = '0.9'}
           />
         ))}
 
