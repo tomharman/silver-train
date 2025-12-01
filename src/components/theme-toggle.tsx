@@ -1,11 +1,31 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 import { IconMoon, IconSun } from "@tabler/icons-react"
 import { Button } from "@/components/ui/button"
 
 export function ThemeToggle() {
+  const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <Button
+        variant="ghost"
+        size="sm"
+        className="w-full justify-start"
+        disabled
+      >
+        <IconMoon className="mr-2 h-4 w-4" />
+        <span>Theme</span>
+      </Button>
+    )
+  }
 
   return (
     <Button
