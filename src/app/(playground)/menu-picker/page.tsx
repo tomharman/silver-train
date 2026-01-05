@@ -7,14 +7,11 @@ export default function MenuPickerPage() {
             <h1 className="text-3xl font-semibold">
               Menu Picker
             </h1>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Coming soon - Interactive menu selection playground
-            </p>
           </div>
 
           <div className="rounded-lg border bg-card p-12 text-center">
             <p className="text-muted-foreground">
-              This playground is under construction
+              This playground will be built in 2026.
             </p>
           </div>
         </div>
