@@ -1,0 +1,5256 @@
+{
+  "startDate": "2026-01-05",
+  "endDate": "2026-07-31",
+  "menus": {
+    "2026-01-05": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-06": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-07": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-08": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-09": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-12": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-13": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-14": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-15": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-16": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-19": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-20": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-21": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-22": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-23": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-26": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-27": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-28": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-29": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-01-30": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-02": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-03": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-04": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-05": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-06": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-09": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-10": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-11": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-12": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-13": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-16": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-17": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-18": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-19": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-20": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-23": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-24": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-25": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-26": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-02-27": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-02": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-03": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-04": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-05": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-06": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-09": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-10": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-11": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-12": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-13": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-16": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-17": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-18": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-19": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-20": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-23": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-24": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-25": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-26": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-27": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-29": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-30": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-03-31": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-01": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-02": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-05": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-06": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-07": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-08": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-09": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-12": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-13": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-14": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-15": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-16": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-19": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-20": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-21": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-22": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-23": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-26": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-27": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-28": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-29": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-04-30": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-03": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-04": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-05": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-06": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-07": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-10": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-11": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-12": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-13": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-14": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-17": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-18": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-19": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-20": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-21": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-24": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-25": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-26": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-27": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-28": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-05-31": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-01": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-02": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-03": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-04": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-07": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-08": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-09": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-10": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-11": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-14": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-15": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-16": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-17": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-18": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-21": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-22": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-23": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-24": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-25": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-28": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-29": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-06-30": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-01": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-02": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-05": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-06": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-07": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-08": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-09": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-12": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-13": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-spaghetti-bolognese",
+          "name": "Veggie Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-14": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "cosy-beef-chilli-rice",
+          "name": "Cosy Beef Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-15": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-16": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-19": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "roast-chicken-potatoes",
+          "name": "Roast Chicken with Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-20": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "veggie-sausages-mash",
+          "name": "Veggie Sausages and Mash",
+          "category": "rotating"
+        },
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-21": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-22": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-23": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "lentil-veggie-shepherds-pie",
+          "name": "Lentil & Veggie Shepherd's Pie",
+          "category": "rotating"
+        },
+        {
+          "id": "veggie-pizza-sweetcorn",
+          "name": "Veggie Pizza with Sweetcorn",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-26": {
+      "dayOfWeek": "Monday",
+      "items": [
+        {
+          "id": "chicken-nuggets-chips",
+          "name": "Chicken Nuggets with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "macaroni-cheese",
+          "name": "Macaroni Cheese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-27": {
+      "dayOfWeek": "Tuesday",
+      "items": [
+        {
+          "id": "margherita-pizza-slaw",
+          "name": "Margherita Pizza with Slaw",
+          "category": "rotating"
+        },
+        {
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-28": {
+      "dayOfWeek": "Wednesday",
+      "items": [
+        {
+          "id": "fish-fingers-chips",
+          "name": "Fish Fingers with Chips",
+          "category": "rotating"
+        },
+        {
+          "id": "sausage-mash-gravy",
+          "name": "Sausage and Mash with Gravy",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-29": {
+      "dayOfWeek": "Thursday",
+      "items": [
+        {
+          "id": "creamy-veggie-pasta",
+          "name": "Creamy Veggie Pasta",
+          "category": "rotating"
+        },
+        {
+          "id": "chicken-nuggets-rice",
+          "name": "Chicken Nuggets with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    },
+    "2026-07-30": {
+      "dayOfWeek": "Friday",
+      "items": [
+        {
+          "id": "fish-fingers-mash",
+          "name": "Fish Fingers with Mashed Potatoes",
+          "category": "rotating"
+        },
+        {
+          "id": "mild-veggie-chilli-rice",
+          "name": "Mild Veggie Chilli with Rice",
+          "category": "rotating"
+        },
+        {
+          "id": "jacket-cheese",
+          "name": "Jacket Potato with Cheese",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-beans",
+          "name": "Jacket Potato with Beans",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-tuna",
+          "name": "Jacket Potato with Tuna",
+          "category": "jacket-potato"
+        },
+        {
+          "id": "jacket-plain",
+          "name": "Jacket Potato (Plain)",
+          "category": "jacket-potato"
+        }
+      ]
+    }
+  }
+}
