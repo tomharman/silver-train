@@ -85,7 +85,7 @@ export function CalendarGrid({
                 ${state.isWeekendDay || !state.hasMenu ? "opacity-40 cursor-not-allowed" : ""}
               `}
             >
-              <span className="flex items-center gap-1">
+              <span className="flex items-center gap-0">
                 {day}
                 {(state.hasPendingSelection || state.hasSavedSelection) && !state.isSelected && (
                   <Check className="h-3 w-3" />
