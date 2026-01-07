@@ -110,7 +110,7 @@ export default function MenuPickerPage() {
             <ArrowLeft className="h-4 w-4" />
             Back
           </Button>
-          <h1 className="text-xl font-semibold absolute left-1/2 transform -translate-x-1/2">
+          <h1 className="text-2xl font-semibold absolute left-1/2 transform -translate-x-1/2">
             Choose your meals
           </h1>
           <div className="w-20" /> {/* Spacer for balance */}
@@ -128,7 +128,7 @@ export default function MenuPickerPage() {
             {/* Render ALL months from Jan 2026 to Jul 2026 */}
             {[0, 1, 2, 3, 4, 5, 6].map((monthOffset) => (
               <div key={monthOffset} id={`month-${monthOffset}`} className="mb-6">
-                <h2 className="text-2xl font-bold mb-3">
+                <h2 className="text-xl font-bold mb-3">
                   {getMonthName(2026, monthOffset)}
                 </h2>
                 <CalendarGrid
