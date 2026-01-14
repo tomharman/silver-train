@@ -11,7 +11,7 @@ interface MenuListProps {
 export function MenuList({ items, selectedItem, onSelectItem }: MenuListProps) {
   return (
     <div className="w-full">
-      <h3 className="text-lg font-semibold mb-4">Main</h3>
+      <h3 className="text-xl font-semibold mb-4">Main</h3>
       <div className="space-y-1">
         {items.map((item) => {
           const isSelected = selectedItem?.id === item.id;
