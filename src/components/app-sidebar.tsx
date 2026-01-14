@@ -29,6 +29,10 @@ const data = {
       title: "Menu Picker",
       url: "/menu-picker",
     },
+    {
+      title: "Pacman",
+      url: "/pacman",
+    },
   ],
 }
 
