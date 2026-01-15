@@ -5,6 +5,7 @@ import {
   IconInnerShadowTop,
   IconListDetails,
   IconMenu2,
+  IconSparkles,
 } from "@tabler/icons-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -32,6 +33,10 @@ const data = {
     {
       title: "Pacman",
       url: "/pacman",
+    },
+    {
+      title: "Particle Image",
+      url: "/particle-image",
     },
   ],
 }
