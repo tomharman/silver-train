@@ -1,0 +1,36 @@
+{
+  "entries": [
+    { "id": "day7-wake", "timestamp": 1767949500000, "state": "awake" },
+    { "id": "day7-nap-start", "timestamp": 1767967200000, "state": "asleep" },
+    { "id": "day7-nap-end", "timestamp": 1767972300000, "state": "awake" },
+    { "id": "day7-bed", "timestamp": 1767992700000, "state": "asleep" },
+
+    { "id": "day6-wake", "timestamp": 1768036200000, "state": "awake" },
+    { "id": "day6-nap-start", "timestamp": 1768053600000, "state": "asleep" },
+    { "id": "day6-nap-end", "timestamp": 1768060200000, "state": "awake" },
+    { "id": "day6-bed", "timestamp": 1768077600000, "state": "asleep" },
+
+    { "id": "day5-wake", "timestamp": 1768122000000, "state": "awake" },
+    { "id": "day5-nap-start", "timestamp": 1768140600000, "state": "asleep" },
+    { "id": "day5-nap-end", "timestamp": 1768145400000, "state": "awake" },
+    { "id": "day5-bed", "timestamp": 1768165500000, "state": "asleep" },
+
+    { "id": "day4-wake", "timestamp": 1768208700000, "state": "awake" },
+    { "id": "day4-nap-start", "timestamp": 1768226400000, "state": "asleep" },
+    { "id": "day4-nap-end", "timestamp": 1768233000000, "state": "awake" },
+    { "id": "day4-bed", "timestamp": 1768252500000, "state": "asleep" },
+
+    { "id": "day3-wake", "timestamp": 1768295700000, "state": "awake" },
+    { "id": "day3-nap-start", "timestamp": 1768312200000, "state": "asleep" },
+    { "id": "day3-nap-end", "timestamp": 1768318200000, "state": "awake" },
+    { "id": "day3-bed", "timestamp": 1768338900000, "state": "asleep" },
+
+    { "id": "day2-wake", "timestamp": 1768382100000, "state": "awake" },
+    { "id": "day2-nap-start", "timestamp": 1768399200000, "state": "asleep" },
+    { "id": "day2-nap-end", "timestamp": 1768403700000, "state": "awake" },
+    { "id": "day2-bed", "timestamp": 1768424400000, "state": "asleep" },
+
+    { "id": "day1-wake", "timestamp": 1768468500000, "state": "awake" }
+  ],
+  "currentState": "awake"
+}
