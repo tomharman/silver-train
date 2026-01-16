@@ -49,3 +49,13 @@ export function getStartOfDay(timestamp: number): number {
   date.setHours(0, 0, 0, 0);
   return date.getTime();
 }
+
+// Format date for display (e.g., "Jan 15, 2026")
+export function formatDate(timestamp: number): string {
+  const date = new Date(timestamp);
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}

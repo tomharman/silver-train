@@ -21,7 +21,7 @@ export function PhoneFrame({ children, currentState }: PhoneFrameProps) {
     return (
       <div
         className={cn(
-          "min-h-screen w-full transition-colors duration-500",
+          "h-screen w-full overflow-hidden transition-colors duration-500",
           bgTint
         )}
       >

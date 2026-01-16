@@ -114,6 +114,31 @@ export function useSleepData() {
     [data]
   );
 
+  // Update a specific entry (timestamp and state)
+  const updateEntry = useCallback(
+    (entryId: string, newTimestamp: number, newState: "asleep" | "awake") => {
+      if (!data) return;
+
+      const updatedEntries = data.entries.map((entry) =>
+        entry.id === entryId
+          ? { ...entry, timestamp: newTimestamp, state: newState }
+          : entry
+      );
+
+      // Update currentState to match the last entry's state
+      const newCurrentState =
+        updatedEntries.length > 0
+          ? updatedEntries[updatedEntries.length - 1].state
+          : "awake";
+
+      setData({
+        entries: updatedEntries,
+        currentState: newCurrentState,
+      });
+    },
+    [data]
+  );
+
   // Delete an entry and its corresponding pair
   const deleteEntry = useCallback(
     (entryId: string) => {
@@ -173,6 +198,7 @@ export function useSleepData() {
     estimatedEndTime,
     toggle,
     updateEntryTime,
+    updateEntry,
     deleteEntry,
     isQuickToggle,
     resolveQuickToggle,
