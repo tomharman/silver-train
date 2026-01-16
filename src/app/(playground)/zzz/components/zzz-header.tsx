@@ -2,7 +2,11 @@
 
 import { BarChart2 } from "lucide-react";
 
-export function ZzzHeader() {
+interface ZzzHeaderProps {
+  onDataEntryClick?: () => void;
+}
+
+export function ZzzHeader({ onDataEntryClick }: ZzzHeaderProps) {
   return (
     <header className="flex items-center justify-between px-6 py-4">
       <h1
@@ -13,8 +17,9 @@ export function ZzzHeader() {
       </h1>
 
       <button
+        onClick={onDataEntryClick}
         className="p-2 rounded-lg hover:bg-neutral-200/50 transition-colors"
-        aria-label="View statistics"
+        aria-label="View data entry"
       >
         <BarChart2 className="w-5 h-5 text-neutral-700" />
       </button>

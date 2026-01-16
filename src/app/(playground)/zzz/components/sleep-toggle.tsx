@@ -50,73 +50,31 @@ function getInterpolatedGradient(progress: number) {
 
 export function SleepToggle({ currentState, onToggle, onDragProgress }: SleepToggleProps) {
   const isAsleep = currentState === "asleep";
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const knobRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragProgress, setDragProgress] = useState(isAsleep ? 1 : 0);
-  const startXRef = useRef(0);
-  const startProgressRef = useRef(0);
+  const [progress, setProgress] = useState(isAsleep ? 1 : 0);
 
-  // Sync with external state changes
+  // Animate progress when state changes
   useEffect(() => {
-    if (!isDragging) {
-      setDragProgress(isAsleep ? 1 : 0);
-    }
-  }, [isAsleep, isDragging]);
+    const targetProgress = isAsleep ? 1 : 0;
+    setProgress(targetProgress);
+  }, [isAsleep]);
 
-  // Notify parent of drag progress
+  // Notify parent of progress for gradient preview
   useEffect(() => {
-    onDragProgress?.(dragProgress);
-  }, [dragProgress, onDragProgress]);
+    onDragProgress?.(progress);
+  }, [progress, onDragProgress]);
 
-  const handlePointerDown = (e: React.PointerEvent) => {
-    e.preventDefault();
-    setIsDragging(true);
-    startXRef.current = e.clientX;
-    startProgressRef.current = dragProgress;
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
-  };
-
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (!isDragging || !buttonRef.current) return;
-
-    const buttonWidth = buttonRef.current.offsetWidth;
-    const knobWidth = 48;
-    const maxTravel = buttonWidth - knobWidth - 12; // 6px padding on each side
-
-    const deltaX = e.clientX - startXRef.current;
-    const deltaProgress = deltaX / maxTravel;
-
-    let newProgress = startProgressRef.current + deltaProgress;
-    newProgress = Math.max(0, Math.min(1, newProgress));
-
-    setDragProgress(newProgress);
-  };
-
-  const handlePointerUp = () => {
-    if (!isDragging) return;
-    setIsDragging(false);
-
-    // Determine if we should toggle based on final position
-    const threshold = 0.5;
-    const shouldBeAsleep = dragProgress >= threshold;
-
-    if (shouldBeAsleep !== isAsleep) {
-      onToggle();
-    } else {
-      // Snap back to original position
-      setDragProgress(isAsleep ? 1 : 0);
-    }
+  const handleClick = () => {
+    onToggle();
   };
 
   // Calculate knob position
-  const knobLeft = 6 + dragProgress * 80; // 6px to 86px
+  const knobLeft = 6 + progress * 80; // 6px to 86px
 
   // Calculate icon interpolation
-  const showMoon = dragProgress > 0.5;
+  const showMoon = progress > 0.5;
 
   return (
-    <div className="relative z-20 flex flex-col items-center gap-4 pb-8 pt-4 bg-white">
+    <div className="sticky bottom-0 z-20 flex flex-col items-center gap-4 pb-8 pt-4 bg-white">
       <p
         className="text-xs text-neutral-900 italic"
         style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
@@ -127,8 +85,8 @@ export function SleepToggle({ currentState, onToggle, onDragProgress }: SleepTog
       <div className="flex items-center gap-6">
         <span
           className={cn(
-            "text-lg font-semibold transition-opacity duration-300 text-neutral-900",
-            dragProgress < 0.5 ? "opacity-100" : "opacity-40"
+            "text-lg font-semibold transition-opacity duration-500 text-neutral-900",
+            progress < 0.5 ? "opacity-100" : "opacity-40"
           )}
           style={{ fontFamily: "var(--font-inter)" }}
         >
@@ -136,18 +94,21 @@ export function SleepToggle({ currentState, onToggle, onDragProgress }: SleepTog
         </span>
 
         <button
-          ref={buttonRef}
-          className="relative w-[140px] h-[60px] rounded-full overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-transparent focus:ring-neutral-400 touch-none"
+          className="relative w-[140px] h-[60px] rounded-full overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-transparent focus:ring-neutral-400 cursor-pointer touch-none"
           aria-label={`Toggle to ${isAsleep ? "awake" : "asleep"}`}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerUp}
-          onPointerCancel={handlePointerUp}
+          onMouseDown={(e) => {
+            e.preventDefault();
+            handleClick();
+          }}
+          onTouchStart={(e) => {
+            e.preventDefault();
+            handleClick();
+          }}
         >
-          {/* Gradient background - interpolated based on drag */}
+          {/* Gradient background - interpolated based on progress */}
           <div
-            className="absolute inset-0"
-            style={{ background: getInterpolatedGradient(dragProgress) }}
+            className="absolute inset-0 transition-all duration-500 ease-in-out"
+            style={{ background: getInterpolatedGradient(progress) }}
           />
 
           {/* Noise texture overlay */}
@@ -165,22 +126,18 @@ export function SleepToggle({ currentState, onToggle, onDragProgress }: SleepTog
 
           {/* Toggle knob */}
           <div
-            ref={knobRef}
-            className="absolute top-[6px] w-[48px] h-[48px] bg-white rounded-full shadow-lg flex items-center justify-center"
-            style={{
-              left: `${knobLeft}px`,
-              transition: isDragging ? 'none' : 'left 0.3s ease-out'
-            }}
+            className="absolute top-[6px] w-[48px] h-[48px] bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-500 ease-in-out"
+            style={{ left: `${knobLeft}px` }}
           >
             {showMoon ? (
               <Moon
-                className="w-5 h-5 text-purple-600 transition-opacity duration-150"
-                style={{ opacity: Math.min(1, (dragProgress - 0.5) * 2) }}
+                className="w-5 h-5 text-purple-600 transition-opacity duration-300"
+                style={{ opacity: Math.min(1, (progress - 0.5) * 2) }}
               />
             ) : (
               <Sun
-                className="w-5 h-5 text-orange-500 transition-opacity duration-150"
-                style={{ opacity: Math.min(1, (0.5 - dragProgress) * 2) }}
+                className="w-5 h-5 text-orange-500 transition-opacity duration-300"
+                style={{ opacity: Math.min(1, (0.5 - progress) * 2) }}
               />
             )}
           </div>
@@ -188,8 +145,8 @@ export function SleepToggle({ currentState, onToggle, onDragProgress }: SleepTog
 
         <span
           className={cn(
-            "text-lg font-semibold transition-opacity duration-300 text-neutral-900",
-            dragProgress >= 0.5 ? "opacity-100" : "opacity-40"
+            "text-lg font-semibold transition-opacity duration-500 text-neutral-900",
+            progress >= 0.5 ? "opacity-100" : "opacity-40"
           )}
           style={{ fontFamily: "var(--font-inter)" }}
         >

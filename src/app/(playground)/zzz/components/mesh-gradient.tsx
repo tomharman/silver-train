@@ -63,16 +63,16 @@ export function MeshGradient({ currentState, dragProgress, scrollProgress }: Mes
       {
         x: 0.3,
         y: 0.7,
-        radius: 0.6,
+        radius: 0.8, // Increased from 0.6
         color: { ...colors[0] },
         noiseOffsetX: Math.random() * 1000,
         noiseOffsetY: Math.random() * 1000,
-        speed: 0.00006, // Slowed down 5x
+        speed: 0.00006,
       },
       {
         x: 0.7,
         y: 0.8,
-        radius: 0.5,
+        radius: 0.7, // Increased from 0.5
         color: { ...colors[1] },
         noiseOffsetX: Math.random() * 1000,
         noiseOffsetY: Math.random() * 1000,
@@ -81,7 +81,7 @@ export function MeshGradient({ currentState, dragProgress, scrollProgress }: Mes
       {
         x: 0.5,
         y: 0.9,
-        radius: 0.55,
+        radius: 0.75, // Increased from 0.55
         color: { ...colors[2] },
         noiseOffsetX: Math.random() * 1000,
         noiseOffsetY: Math.random() * 1000,
@@ -90,7 +90,7 @@ export function MeshGradient({ currentState, dragProgress, scrollProgress }: Mes
       {
         x: 0.2,
         y: 0.95,
-        radius: 0.45,
+        radius: 0.65, // Increased from 0.45
         color: { ...colors[3] },
         noiseOffsetX: Math.random() * 1000,
         noiseOffsetY: Math.random() * 1000,
@@ -184,11 +184,11 @@ export function MeshGradient({ currentState, dragProgress, scrollProgress }: Mes
         }
       });
 
-      // Update blob positions using noise - much slower and gentler
+      // Update blob positions using noise - bigger movements for more impact
       blobsRef.current.forEach((blob) => {
         const time = timeRef.current * blob.speed;
-        blob.x = 0.5 + fractalNoise2D(blob.noiseOffsetX + time, 0, 2, 0.5) * 0.3;
-        blob.y = 0.75 + fractalNoise2D(0, blob.noiseOffsetY + time, 2, 0.5) * 0.15 + bounceOffset;
+        blob.x = 0.5 + fractalNoise2D(blob.noiseOffsetX + time, 0, 2, 0.5) * 0.45; // Increased from 0.3
+        blob.y = 0.75 + fractalNoise2D(0, blob.noiseOffsetY + time, 2, 0.5) * 0.25 + bounceOffset; // Increased from 0.15
       });
 
       // Draw blobs with radial gradients

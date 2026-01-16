@@ -8,11 +8,13 @@ import { SleepToggle } from "./components/sleep-toggle";
 import { TimePickerDrawer } from "./components/time-picker-drawer";
 import { QuickToggleModal } from "./components/quick-toggle-modal";
 import { MeshGradient } from "./components/mesh-gradient";
+import { DataEntryView } from "./components/data-entry-view";
 import { useSleepData } from "./hooks/useSleepData";
 import type { DisplayEntry } from "./types";
 
 export default function ZzzPage() {
   const {
+    data,
     displayEntries,
     activeEntry,
     currentState,
@@ -20,6 +22,7 @@ export default function ZzzPage() {
     estimatedEndTime,
     toggle,
     updateEntryTime,
+    updateEntry,
     deleteEntry,
     isQuickToggle,
     resolveQuickToggle,
@@ -27,6 +30,7 @@ export default function ZzzPage() {
 
   const [editingEntry, setEditingEntry] = useState<DisplayEntry | null>(null);
   const [showQuickToggleModal, setShowQuickToggleModal] = useState(false);
+  const [showDataEntry, setShowDataEntry] = useState(false);
   const [dragProgress, setDragProgress] = useState<number | undefined>(undefined);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -71,33 +75,42 @@ export default function ZzzPage() {
 
   return (
     <PhoneFrame currentState={currentState}>
-      <div className="relative flex flex-col h-full">
-        <ZzzHeader />
-
-        <SleepFeed
-          entries={displayEntries}
-          currentState={currentState}
-          activeStartTimestamp={activeEntry?.timestamp || null}
-          activeEntryId={activeEntry?.id || null}
-          now={now}
-          estimatedEndTime={estimatedEndTime}
-          onEditTime={handleEditTime}
-          onScrollProgress={handleScrollProgress}
+      {showDataEntry && data ? (
+        <DataEntryView
+          entries={data.entries}
+          onUpdateEntry={updateEntry}
+          onDeleteEntry={deleteEntry}
+          onClose={() => setShowDataEntry(false)}
         />
+      ) : (
+        <div className="relative flex flex-col h-full">
+          <ZzzHeader onDataEntryClick={() => setShowDataEntry(true)} />
 
-        {/* Animated mesh gradient overlay */}
-        <MeshGradient
-          currentState={currentState}
-          dragProgress={dragProgress}
-          scrollProgress={scrollProgress}
-        />
+          <SleepFeed
+            entries={displayEntries}
+            currentState={currentState}
+            activeStartTimestamp={activeEntry?.timestamp || null}
+            activeEntryId={activeEntry?.id || null}
+            now={now}
+            estimatedEndTime={estimatedEndTime}
+            onEditTime={handleEditTime}
+            onScrollProgress={handleScrollProgress}
+          />
 
-        <SleepToggle
-          currentState={currentState}
-          onToggle={handleToggle}
-          onDragProgress={handleDragProgress}
-        />
-      </div>
+          {/* Animated mesh gradient overlay */}
+          <MeshGradient
+            currentState={currentState}
+            dragProgress={dragProgress}
+            scrollProgress={scrollProgress}
+          />
+
+          <SleepToggle
+            currentState={currentState}
+            onToggle={handleToggle}
+            onDragProgress={handleDragProgress}
+          />
+        </div>
+      )}
 
       <TimePickerDrawer
         open={!!editingEntry}

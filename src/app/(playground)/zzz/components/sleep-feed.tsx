@@ -84,6 +84,13 @@ export function SleepFeed({
     }
   }, [entries.length]);
 
+  // Also scroll to bottom when current state changes (ensures scroll after any toggle)
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [currentState]);
+
   // Group entries by day (oldest first for rendering)
   const entriesByDay = groupEntriesByDay(entries);
 
