@@ -39,6 +39,10 @@ const data = {
       url: "/particle-image",
     },
     {
+      title: "Shaders",
+      url: "/shaders",
+    },
+    {
       title: "Zzz",
       url: "/zzz",
     },
