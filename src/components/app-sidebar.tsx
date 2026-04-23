@@ -43,6 +43,10 @@ const data = {
       url: "/shaders",
     },
     {
+      title: "Sound Maker",
+      url: "/sound-maker",
+    },
+    {
       title: "Zzz",
       url: "/zzz",
     },
