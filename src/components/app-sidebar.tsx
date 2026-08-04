@@ -23,6 +23,10 @@ import {
 const data = {
   navMain: [
     {
+      title: "Chess Club",
+      url: "/chess",
+    },
+    {
       title: "Transaction List",
       url: "/transaction-list",
     },

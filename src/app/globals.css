@@ -120,3 +120,43 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Chess Club: a piece landing, and the pulsing "you can go here" hints. */
+@keyframes chess-pop {
+  0% {
+    transform: scale(0.72);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes chess-throb {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+.chess-pop {
+  animation: chess-pop 180ms ease-out;
+}
+
+.chess-throb {
+  animation: chess-throb 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chess-pop,
+  .chess-throb {
+    animation: none;
+  }
+}
