@@ -1,21 +1,60 @@
 let context: AudioContext | null = null;
+let unlocked = false;
 
-function audio(): AudioContext | null {
+type WebkitWindow = Window & { webkitAudioContext?: typeof AudioContext };
+
+function create(): AudioContext | null {
   if (typeof window === "undefined") return null;
-  if (!context) {
-    try {
-      context = new AudioContext();
-    } catch {
-      return null;
-    }
+  if (context) return context;
+
+  const Ctor = window.AudioContext ?? (window as WebkitWindow).webkitAudioContext;
+  if (!Ctor) return null;
+
+  try {
+    context = new Ctor();
+  } catch {
+    return null;
   }
-  if (context.state === "suspended") void context.resume();
   return context;
 }
 
-function blip(frequency: number, duration: number, type: OscillatorType, delay = 0, gain = 0.14) {
-  const ctx = audio();
+/**
+ * iOS will not let a page make a sound until an AudioContext has been created
+ * *and* resumed inside a real user gesture, and it silently suspends the
+ * context again whenever the page goes to the background. Without this, the
+ * first noise the game tries to make is the computer's reply — which happens on
+ * a timer, not a tap — and audio stays dead for the whole session.
+ *
+ * So: unlock on the first touch anywhere, and top the context up on every
+ * later interaction, which is cheap when it is already running.
+ */
+export function unlockAudio(): void {
+  const ctx = create();
   if (!ctx) return;
+
+  if (ctx.state === "suspended") void ctx.resume();
+
+  if (!unlocked) {
+    // A single silent sample. Some iOS versions need one to consider the
+    // context genuinely started.
+    try {
+      const buffer = ctx.createBuffer(1, 1, 22050);
+      const source = ctx.createBufferSource();
+      source.buffer = buffer;
+      source.connect(ctx.destination);
+      source.start(0);
+      unlocked = true;
+    } catch {
+      // If it fails we simply try again on the next interaction.
+    }
+  }
+}
+
+function blip(frequency: number, duration: number, type: OscillatorType, delay = 0, gain = 0.14) {
+  const ctx = context;
+  // Deliberately does not create the context: if we have not been unlocked by a
+  // real gesture yet there is nothing useful to play into.
+  if (!ctx || ctx.state !== "running") return;
 
   const start = ctx.currentTime + delay;
   const oscillator = ctx.createOscillator();

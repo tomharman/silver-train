@@ -121,7 +121,14 @@
   }
 }
 
-/* Chess Club: a piece landing, and the pulsing "you can go here" hints. */
+/* ---------------------------------------------------------------------------
+   Chess Club
+   The piece's journey across the board is a CSS transition on the wrapper's
+   transform. These keyframes are the flourish layered on top of that: how the
+   piece carries itself while it travels, and what happens to whatever it lands
+   on. Each theme picks a set in data/themes.ts.
+   --------------------------------------------------------------------------- */
+
 @keyframes chess-pop {
   0% {
     transform: scale(0.72);
@@ -146,6 +153,217 @@
   }
 }
 
+/* --- how a piece travels --- */
+
+@keyframes chess-travel-hop {
+  0% {
+    transform: translateY(0) scale(1, 1);
+  }
+  15% {
+    transform: translateY(6%) scale(1.12, 0.88);
+  }
+  50% {
+    transform: translateY(-42%) scale(0.94, 1.1);
+  }
+  85% {
+    transform: translateY(4%) scale(1.14, 0.86);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+@keyframes chess-travel-float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  35% {
+    transform: translateY(-18%) rotate(-7deg);
+  }
+  70% {
+    transform: translateY(-10%) rotate(6deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes chess-travel-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.14);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes chess-travel-roll {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes chess-travel-stomp {
+  0% {
+    transform: translateY(0) scale(1, 1);
+  }
+  55% {
+    transform: translateY(-14%) scale(0.94, 1.08);
+  }
+  78% {
+    transform: translateY(0) scale(1.22, 0.78);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+.chess-travel-slide {
+  /* Nothing extra — the transition does all of it. */
+}
+.chess-travel-hop {
+  animation: chess-travel-hop 420ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.chess-travel-float {
+  animation: chess-travel-float 480ms ease-in-out;
+}
+.chess-travel-spin {
+  animation: chess-travel-spin 380ms ease-in-out;
+}
+.chess-travel-roll {
+  animation: chess-travel-roll 420ms linear;
+}
+.chess-travel-stomp {
+  animation: chess-travel-stomp 320ms ease-out;
+}
+
+/* --- what happens to the piece that was taken --- */
+
+@keyframes chess-victim-poof {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  45% {
+    transform: scale(1.25) rotate(6deg);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(0.4) rotate(-12deg);
+    opacity: 0;
+  }
+}
+
+@keyframes chess-victim-chomp {
+  0% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(1.3, 0.6);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(0.5, 1.25) rotate(14deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.2, 0.2) rotate(28deg);
+    opacity: 0;
+  }
+}
+
+@keyframes chess-victim-sparkle {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.15) rotate(420deg);
+    opacity: 0;
+  }
+}
+
+@keyframes chess-victim-yum {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  35% {
+    transform: scale(1.18);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.55) translateY(10%);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(0) translateY(20%);
+    opacity: 0;
+  }
+}
+
+@keyframes chess-victim-crumble {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  30% {
+    transform: translateY(-14%) rotate(-10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(55%) rotate(48deg) scale(0.6);
+    opacity: 0;
+  }
+}
+
+.chess-victim-poof {
+  animation: chess-victim-poof 460ms ease-out both;
+}
+.chess-victim-chomp {
+  animation: chess-victim-chomp 460ms ease-out both;
+}
+.chess-victim-sparkle {
+  animation: chess-victim-sparkle 500ms ease-in both;
+}
+.chess-victim-yum {
+  animation: chess-victim-yum 480ms ease-in both;
+}
+.chess-victim-crumble {
+  animation: chess-victim-crumble 520ms ease-in both;
+}
+
+/* --- the little emoji thrown out of a capture --- */
+
+@keyframes chess-burst {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(
+        calc(-50% + var(--chess-dx, 0px)),
+        calc(-50% + var(--chess-dy, 0px))
+      )
+      scale(1.1);
+    opacity: 0;
+  }
+}
+
+.chess-burst {
+  animation: chess-burst 620ms ease-out both;
+}
+
 .chess-pop {
   animation: chess-pop 180ms ease-out;
 }
@@ -154,9 +372,26 @@
   animation: chess-throb 1.4s ease-in-out infinite;
 }
 
+/* Everything above is decoration. Turn all of it off for anyone who has asked
+   for less movement — the game plays identically without it. */
 @media (prefers-reduced-motion: reduce) {
   .chess-pop,
-  .chess-throb {
-    animation: none;
+  .chess-throb,
+  .chess-burst,
+  [class*="chess-travel-"],
+  [class*="chess-victim-"] {
+    animation: none !important;
+  }
+
+  /* These two finish invisible, so without the animation they must start that
+     way or a taken piece would sit on the board for ever. */
+  .chess-burst,
+  [class*="chess-victim-"] {
+    opacity: 0;
+  }
+
+  /* Beats the per-piece duration set inline. */
+  .chess-piece {
+    transition-duration: 1ms !important;
   }
 }

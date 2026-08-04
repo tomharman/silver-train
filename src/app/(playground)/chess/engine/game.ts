@@ -21,6 +21,7 @@ export function createGame(level: Level): GameState {
     idleTurns: 0,
     lastMove: null,
     captured: [],
+    ply: 0,
     outcome: computeOutcome(board, level, "white", null, 0),
   };
 }
@@ -32,7 +33,10 @@ export function applyMove(state: GameState, level: Level, move: Move): GameState
 
   if (move.capture) board.squares[move.capture.square] = null;
   board.squares[move.from] = null;
+  // The id survives a promotion, so the pawn visibly becomes a queen in place
+  // rather than one piece vanishing and another appearing.
   board.squares[move.to] = {
+    id: piece.id,
     type: move.promotion ?? piece.type,
     color: piece.color,
     moved: true,
@@ -62,6 +66,7 @@ export function applyMove(state: GameState, level: Level, move: Move): GameState
     idleTurns,
     lastMove: move,
     captured: move.capture ? [...state.captured, move.capture.piece] : state.captured,
+    ply: state.ply + 1,
     outcome: computeOutcome(board, level, turn, epTarget, idleTurns),
   };
 }

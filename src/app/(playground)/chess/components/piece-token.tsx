@@ -1,5 +1,6 @@
 "use client";
 
+import { PieceArt } from "./piece-art";
 import type { Piece, PieceTheme } from "../types";
 
 interface PieceTokenProps {
@@ -27,43 +28,28 @@ export function PieceToken({ piece, theme, size, className = "" }: PieceTokenPro
     );
   }
 
-  if (theme.style === "token") {
+  if (theme.style === "art") {
     return (
-      <span
-        className={`flex select-none items-center justify-center rounded-full ${className}`}
-        style={{
-          width: size * 0.78,
-          height: size * 0.78,
-          fontSize: size * 0.44,
-          lineHeight: 1,
-          background: isWhite ? "#FFFCF2" : "#2A2E3A",
-          boxShadow: isWhite
-            ? "0 2px 4px rgba(0,0,0,0.28), inset 0 0 0 2px rgba(0,0,0,0.12)"
-            : "0 2px 4px rgba(0,0,0,0.38), inset 0 0 0 2px rgba(255,255,255,0.22)",
-        }}
-      >
-        {skin.glyph}
+      <span className={`flex items-center justify-center ${className}`}>
+        <PieceArt type={piece.type} light={isWhite} size={size * 0.84} />
       </span>
     );
   }
 
-  const outline = isWhite ? "#2A2E3A" : "#F7F3E8";
-
+  // Emoji carry their own colours, so the two sides are told apart by the disc
+  // they sit on rather than by the character itself.
   return (
     <span
-      className={`select-none ${className}`}
+      className={`flex select-none items-center justify-center rounded-full ${className}`}
       style={{
-        fontSize: size * 0.78,
+        width: size * 0.78,
+        height: size * 0.78,
+        fontSize: size * 0.44,
         lineHeight: 1,
-        color: isWhite ? "#FFFFFF" : "#22252E",
-        textShadow: [
-          `0 0 1px ${outline}`,
-          `1px 0 1px ${outline}`,
-          `-1px 0 1px ${outline}`,
-          `0 1px 1px ${outline}`,
-          `0 -1px 1px ${outline}`,
-          "0 2px 3px rgba(0,0,0,0.3)",
-        ].join(", "),
+        background: isWhite ? "#FFFCF2" : "#2A2E3A",
+        boxShadow: isWhite
+          ? "0 2px 4px rgba(0,0,0,0.28), inset 0 0 0 2px rgba(0,0,0,0.12)"
+          : "0 2px 4px rgba(0,0,0,0.38), inset 0 0 0 2px rgba(255,255,255,0.22)",
       }}
     >
       {skin.glyph}

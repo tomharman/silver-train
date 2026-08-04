@@ -44,6 +44,10 @@ export function ChessGame({
   const [past, setPast] = useState<GameState[]>([]);
   const [selected, setSelected] = useState<number | null>(null);
   const [dismissedWin, setDismissedWin] = useState(false);
+  // Stepping backwards restores an earlier position, whose `lastMove` may well
+  // be a capture. Without this, pressing Oops! replays that capture's flourish
+  // and it looks like undoing ate something.
+  const [showEffects, setShowEffects] = useState(true);
 
   const computerToPlay = mode === "one" && state.turn === "black" && !state.outcome;
   const canPlay = !state.outcome && !computerToPlay;
@@ -75,6 +79,7 @@ export function ChessGame({
   const play = useCallback(
     (move: Move) => {
       const next = applyMove(state, level, move);
+      setShowEffects(true);
       setPast((history) => [...history, state]);
       setState(next);
       setSelected(null);
@@ -136,6 +141,7 @@ export function ChessGame({
     setPast([]);
     setSelected(null);
     setDismissedWin(false);
+    setShowEffects(false);
   }, [level]);
 
   const undo = useCallback(() => {
@@ -146,6 +152,7 @@ export function ChessGame({
     setPast(past.slice(0, past.length - steps));
     setSelected(null);
     setDismissedWin(false);
+    setShowEffects(false);
   }, [past, mode]);
 
   return (
@@ -184,6 +191,8 @@ export function ChessGame({
         targets={targets}
         pickable={pickable}
         lastMove={state.lastMove}
+        ply={state.ply}
+        showEffects={showEffects}
         checkSquare={checkSquare}
         onSquare={handleSquare}
       />

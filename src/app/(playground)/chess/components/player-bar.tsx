@@ -31,22 +31,12 @@ export function PlayerBar({
         isTurn ? "border-amber-400 bg-amber-50 dark:bg-amber-950/40" : "border-transparent bg-muted"
       } ${align === "right" ? "flex-row-reverse text-right" : ""}`}
     >
-      <span
-        className="flex size-9 shrink-0 items-center justify-center rounded-full"
-        style={{
-          background: color === "white" ? "#FFFCF2" : "#2A2E3A",
-          boxShadow: "inset 0 0 0 2px rgba(0,0,0,0.15)",
-        }}
-      >
-        <span
-          style={{
-            fontSize: 20,
-            lineHeight: 1,
-            color: color === "white" ? "#22252E" : "#F7F3E8",
-          }}
-        >
-          {theme.pieces.king.glyph}
-        </span>
+      <span className="flex size-9 shrink-0 items-center justify-center">
+        <PieceToken
+          piece={{ id: -1, type: "king", color, moved: false }}
+          theme={theme}
+          size={38}
+        />
       </span>
 
       <div className={`min-w-0 flex-1 ${align === "right" ? "items-end" : ""}`}>
@@ -58,8 +48,8 @@ export function PlayerBar({
 
       {loot.length > 0 && (
         <div className={`flex max-w-[40%] flex-wrap gap-0.5 ${align === "right" ? "justify-start" : "justify-end"}`}>
-          {loot.map((piece, index) => (
-            <PieceToken key={index} piece={piece} theme={theme} size={18} />
+          {loot.map((piece) => (
+            <PieceToken key={piece.id} piece={piece} theme={theme} size={20} />
           ))}
         </div>
       )}

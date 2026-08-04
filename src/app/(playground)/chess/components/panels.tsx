@@ -81,7 +81,11 @@ export function HowToPanel({
           <div key={type} className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2">
             <span className="flex size-8 shrink-0 items-center justify-center">
               {/* Dark pieces: the light ones vanish against this panel. */}
-              <PieceToken piece={{ type, color: "black", moved: false }} theme={theme} size={30} />
+              <PieceToken
+                piece={{ id: -1, type, color: "black", moved: false }}
+                theme={theme}
+                size={32}
+              />
             </span>
             <div className="min-w-0">
               <div className="text-sm font-semibold">{theme.pieces[type].name}</div>

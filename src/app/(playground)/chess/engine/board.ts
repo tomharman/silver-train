@@ -42,6 +42,10 @@ export function parseSetup(level: Level): Board {
     squares: new Array<Piece | null>(level.width * level.height).fill(null),
   };
 
+  // Ids are handed out in setup order and then carried by the piece for the
+  // rest of the game, so the board can animate it from square to square.
+  let nextId = 1;
+
   level.setup.forEach((row, rowIndex) => {
     const rank = level.height - 1 - rowIndex;
     for (let file = 0; file < level.width; file += 1) {
@@ -50,7 +54,8 @@ export function parseSetup(level: Level): Board {
       const type = CHAR_TO_TYPE[char.toLowerCase()];
       if (!type) continue;
       const color: Color = char === char.toUpperCase() ? "white" : "black";
-      board.squares[idx(board, file, rank)] = { type, color, moved: false };
+      board.squares[idx(board, file, rank)] = { id: nextId, type, color, moved: false };
+      nextId += 1;
     }
   });
 

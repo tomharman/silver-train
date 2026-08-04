@@ -3,6 +3,12 @@ export type PieceType = "pawn" | "knight" | "bishop" | "rook" | "queen" | "king"
 export type Color = "white" | "black";
 
 export interface Piece {
+  /**
+   * Stable for the life of a game, and carried through moves and promotions.
+   * This is what lets the board animate a piece from one square to the next
+   * instead of unmounting it here and mounting a new one there.
+   */
+  id: number;
   type: PieceType;
   color: Color;
   /** Only matters for castling, but cheap to track everywhere. */
@@ -95,11 +101,24 @@ export interface GameState {
   idleTurns: number;
   lastMove: Move | null;
   captured: Piece[];
+  /** Half-moves played. Used as an animation key so effects replay each turn. */
+  ply: number;
   outcome: Outcome | null;
 }
 
+/**
+ * How a piece carries itself across the board. Purely decorative — the legal
+ * moves are identical whatever this says — but picking one that suits the
+ * character is the point of a theme: the popcorn pops, the planet rolls, the
+ * comet floats.
+ */
+export type TravelStyle = "slide" | "hop" | "float" | "spin" | "roll" | "stomp";
+
+/** What happens on the square where something just got taken. */
+export type CaptureEffect = "poof" | "chomp" | "sparkle" | "yum" | "crumble";
+
 export interface PieceSkin {
-  /** Emoji or Unicode chess glyph. */
+  /** Emoji. Ignored by the `art` style, which draws proper chess pieces. */
   glyph: string;
   /**
    * Optional character artwork, e.g. `/chess/bluey/king.png`. When set this
@@ -108,6 +127,8 @@ export interface PieceSkin {
   imageSrc?: string;
   /** What this piece is called in this theme — "Knight", "Sonic", "Bluey". */
   name: string;
+  /** Defaults to a hop for knights and a slide for everything else. */
+  travel?: TravelStyle;
 }
 
 export interface PieceTheme {
@@ -115,13 +136,19 @@ export interface PieceTheme {
   name: string;
   emoji: string;
   /**
-   * `glyph` renders the character bare (right for Unicode chess pieces, which
-   * carry their own colour). `token` sits it on a light or dark disc, which is
-   * how you tell the two sides apart when both are emoji or artwork.
+   * `art` draws the built-in SVG chess pieces, coloured per side. `token` sits
+   * the emoji or artwork on a light or dark disc, which is how you tell the two
+   * sides apart when the character brings its own colours.
+   *
+   * Emoji are never drawn bare: iOS renders many of them — including the
+   * Unicode chess characters — with the colour emoji font, which ignores CSS
+   * `color` entirely and would leave both armies looking black.
    */
-  style: "glyph" | "token";
+  style: "art" | "token";
   whiteLabel: string;
   blackLabel: string;
+  /** What a capture looks like in this theme. Defaults to a puff of smoke. */
+  captureEffect?: CaptureEffect;
   pieces: Record<PieceType, PieceSkin>;
 }
 

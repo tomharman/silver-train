@@ -304,6 +304,7 @@ export function boardAfter(board: Board, move: Move): Board {
   if (move.capture) next.squares[move.capture.square] = null;
   next.squares[move.from] = null;
   next.squares[move.to] = {
+    id: piece.id,
     type: move.promotion ?? piece.type,
     color: piece.color,
     moved: true,

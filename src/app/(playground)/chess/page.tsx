@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { HelpCircle, Settings2, Volume2, VolumeX } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,7 @@ import { LEVELS, getLevel } from "./data/levels";
 import { getTheme } from "./data/themes";
 import { useStoredState } from "./hooks/use-stored-state";
 import type { Color, Difficulty, Mode } from "./types";
+import { unlockAudio } from "./utils/sound";
 
 const NO_PROGRESS: Record<string, boolean> = {};
 
@@ -36,6 +37,14 @@ export default function ChessPage() {
   const levelIndex = LEVELS.findIndex((candidate) => candidate.id === level.id);
   const nextLevel = LEVELS[levelIndex + 1];
 
+  // Mobile browsers only start audio from inside a real gesture, so the very
+  // first touch anywhere on the page is what wakes it up.
+  useEffect(() => {
+    const wake = () => unlockAudio();
+    window.addEventListener("pointerdown", wake, { capture: true });
+    return () => window.removeEventListener("pointerdown", wake, { capture: true });
+  }, []);
+
   const nameOf = useCallback(
     (color: Color) => {
       if (color === "white") return playerOne || "Player 1";
@@ -56,11 +65,11 @@ export default function ChessPage() {
   );
 
   return (
-    <div className="flex flex-1 flex-col gap-4 p-4 lg:p-6">
+    <div className="flex flex-1 flex-col gap-3 p-3 sm:gap-4 sm:p-4 lg:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold leading-tight">Chess Club</h1>
-          <p className="text-sm text-muted-foreground">
+          <h1 className="text-xl font-bold leading-tight sm:text-2xl">Chess Club</h1>
+          <p className="hidden text-sm text-muted-foreground sm:block">
             Six little games that add up to real chess.
           </p>
         </div>
@@ -68,6 +77,7 @@ export default function ChessPage() {
           <Button
             variant="outline"
             size="icon"
+            className="size-9"
             aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
             onClick={() => setSoundOn(!soundOn)}
           >
@@ -75,12 +85,13 @@ export default function ChessPage() {
           </Button>
           <Button
             variant={showSetup ? "default" : "outline"}
+            size="sm"
             onClick={() => setShowSetup(!showSetup)}
           >
             <Settings2 />
             Setup
           </Button>
-          <Button variant="outline" onClick={() => setShowHowTo(true)}>
+          <Button variant="outline" size="sm" onClick={() => setShowHowTo(true)}>
             <HelpCircle />
             How to play
           </Button>
