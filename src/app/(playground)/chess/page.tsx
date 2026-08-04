@@ -25,6 +25,7 @@ export default function ChessPage() {
   const [difficulty, setDifficulty] = useStoredState<Difficulty>("chess-difficulty", "sleepy");
   const [themeId, setThemeId] = useStoredState("chess-theme", "classic");
   const [soundOn, setSoundOn] = useStoredState("chess-sound", true);
+  const [showDanger, setShowDanger] = useStoredState("chess-danger", false);
   const [playerOne, setPlayerOne] = useStoredState("chess-player-one", "Player 1");
   const [playerTwo, setPlayerTwo] = useStoredState("chess-player-two", "Player 2");
   const [won, setWon] = useStoredState("chess-progress", NO_FLAGS);
@@ -149,6 +150,8 @@ export default function ChessPage() {
           playerTwo={playerTwo}
           onPlayerOneChange={setPlayerOne}
           onPlayerTwoChange={setPlayerTwo}
+          showDanger={showDanger}
+          onShowDangerChange={setShowDanger}
         />
       )}
 
@@ -171,6 +174,7 @@ export default function ChessPage() {
           mode={mode}
           difficulty={difficulty}
           soundOn={soundOn}
+          showDanger={showDanger}
           nameOf={nameOf}
           stickers={stickers}
           hasNextLevel={Boolean(nextLevel)}

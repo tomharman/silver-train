@@ -10,7 +10,7 @@ import { ChessBoard, boardMaxWidth } from "./chess-board";
 import { PipSays } from "./pip";
 import { PlayerBar } from "./player-bar";
 import { pickMove } from "../engine/ai";
-import { findKing, promotionRank, rankOf } from "../engine/board";
+import { findKing, opponent, promotionRank, rankOf } from "../engine/board";
 import { applyMove, createGame, inCheckNow } from "../engine/game";
 import { legalMoves } from "../engine/moves";
 import type {
@@ -33,6 +33,8 @@ interface ChessGameProps {
   mode: Mode;
   difficulty: Difficulty;
   soundOn: boolean;
+  /** Ring the pieces the other side could take next go. */
+  showDanger: boolean;
   nameOf: (color: Color) => string;
   /** Stickers already in the book, so we only celebrate genuinely new ones. */
   stickers: Record<string, boolean>;
@@ -51,6 +53,7 @@ export function ChessGame({
   mode,
   difficulty,
   soundOn,
+  showDanger,
   nameOf,
   stickers,
   hasNextLevel,
@@ -105,6 +108,18 @@ export function ChessGame({
     }
     return map;
   }, [availableMoves, selected, canPlay]);
+
+  // Everything the side to move could lose on the opponent's reply. The most
+  // useful thing to show a beginner after "where can this go".
+  const inDanger = useMemo(() => {
+    const squares = new Set<number>();
+    if (!showDanger || state.outcome || computerToPlay) return squares;
+
+    for (const move of legalMoves(state.board, level, opponent(state.turn), state.epTarget)) {
+      if (move.capture?.piece.color === state.turn) squares.add(move.capture.square);
+    }
+    return squares;
+  }, [showDanger, state, level, computerToPlay]);
 
   const checkSquare = useMemo(() => {
     if (!level.rules.check || state.outcome || !inCheckNow(state, level)) return null;
@@ -321,6 +336,7 @@ export function ChessGame({
         ply={state.ply}
         showEffects={showEffects}
         round={round}
+        inDanger={inDanger}
         checkSquare={checkSquare}
         onSquare={handleSquare}
       />

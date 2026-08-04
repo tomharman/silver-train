@@ -28,6 +28,8 @@ interface ChessBoardProps {
   showEffects: boolean;
   /** Bumped when a fresh game starts, so the pieces march on again. */
   round: number;
+  /** Your pieces the other side could take on their next go. */
+  inDanger: Set<number>;
   checkSquare: number | null;
   onSquare: (square: number) => void;
 }
@@ -42,6 +44,7 @@ export function ChessBoard({
   ply,
   showEffects,
   round,
+  inDanger,
   checkSquare,
   onSquare,
 }: ChessBoardProps) {
@@ -120,6 +123,13 @@ export function ChessBoard({
 
                   {isSelected && (
                     <span className="pointer-events-none absolute inset-0 bg-amber-300/60 ring-4 ring-inset ring-amber-400" />
+                  )}
+
+                  {inDanger.has(square) && (
+                    <span
+                      className="pointer-events-none absolute inset-[7%] rounded-lg"
+                      style={{ boxShadow: "inset 0 0 0 3px rgba(220,38,38,0.75)" }}
+                    />
                   )}
 
                   {isCheck && (

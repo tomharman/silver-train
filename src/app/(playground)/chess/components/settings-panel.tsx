@@ -57,6 +57,8 @@ interface SettingsPanelProps {
   playerTwo: string;
   onPlayerOneChange: (name: string) => void;
   onPlayerTwoChange: (name: string) => void;
+  showDanger: boolean;
+  onShowDangerChange: (value: boolean) => void;
 }
 
 export function SettingsPanel({
@@ -70,9 +72,21 @@ export function SettingsPanel({
   playerTwo,
   onPlayerOneChange,
   onPlayerTwoChange,
+  showDanger,
+  onShowDangerChange,
 }: SettingsPanelProps) {
   return (
     <div className="grid gap-3 rounded-xl border bg-card p-3 sm:grid-cols-2 xl:grid-cols-4">
+      <Segmented<"off" | "on">
+        label="Danger hints"
+        value={showDanger ? "on" : "off"}
+        onChange={(value) => onShowDangerChange(value === "on")}
+        options={[
+          { value: "off", label: "Off" },
+          { value: "on", label: "Ring what's at risk" },
+        ]}
+      />
+
       <Segmented<Mode>
         label="Who's playing"
         value={mode}
