@@ -1,18 +1,29 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { RotateCcw, Undo2 } from "lucide-react";
+import { ChevronLeft, HelpCircle, RotateCcw, Undo2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
+import { WinCelebration } from "./celebration";
 import { ChessBoard, boardMaxWidth } from "./chess-board";
-import { WinOverlay } from "./panels";
+import { PipSays } from "./pip";
 import { PlayerBar } from "./player-bar";
 import { pickMove } from "../engine/ai";
-import { findKing } from "../engine/board";
+import { findKing, promotionRank, rankOf } from "../engine/board";
 import { applyMove, createGame, inCheckNow } from "../engine/game";
 import { legalMoves } from "../engine/moves";
-import type { Color, Difficulty, GameState, Level, Mode, Move, PieceTheme } from "../types";
+import type {
+  Color,
+  Difficulty,
+  GameState,
+  Level,
+  Mode,
+  Move,
+  PieceTheme,
+  PieceType,
+} from "../types";
+import * as say from "../utils/commentary";
 import { sounds } from "../utils/sound";
 
 interface ChessGameProps {
@@ -23,8 +34,13 @@ interface ChessGameProps {
   difficulty: Difficulty;
   soundOn: boolean;
   nameOf: (color: Color) => string;
+  /** Stickers already in the book, so we only celebrate genuinely new ones. */
+  stickers: Record<string, boolean>;
   hasNextLevel: boolean;
   onNextLevel: () => void;
+  onBackToMap: () => void;
+  onHowToPlay: () => void;
+  onEarnSticker: (id: string) => void;
   /** Called once, the moment a game finishes, with the side that won (if any). */
   onFinish: (winner: Color | null) => void;
 }
@@ -36,8 +52,12 @@ export function ChessGame({
   difficulty,
   soundOn,
   nameOf,
+  stickers,
   hasNextLevel,
   onNextLevel,
+  onBackToMap,
+  onHowToPlay,
+  onEarnSticker,
   onFinish,
 }: ChessGameProps) {
   const [state, setState] = useState<GameState>(() => createGame(level));
@@ -48,6 +68,21 @@ export function ChessGame({
   // be a capture. Without this, pressing Oops! replays that capture's flourish
   // and it looks like undoing ate something.
   const [showEffects, setShowEffects] = useState(true);
+  const [earnedThisGame, setEarnedThisGame] = useState<string[]>([]);
+  // Which pieces Pip has already explained on this level.
+  const [taught, setTaught] = useState<PieceType[]>([]);
+  // Bumped on restart so the pieces march on again.
+  const [round, setRound] = useState(0);
+
+  const [message, setMessage] = useState<say.Line>(() =>
+    say.levelWelcome(level, theme, nameOf("white")),
+  );
+  const [messageKey, setMessageKey] = useState(0);
+
+  const speak = useCallback((next: say.Line) => {
+    setMessage(next);
+    setMessageKey((key) => key + 1);
+  }, []);
 
   const computerToPlay = mode === "one" && state.turn === "black" && !state.outcome;
   const canPlay = !state.outcome && !computerToPlay;
@@ -66,7 +101,7 @@ export function ChessGame({
     const map = new Map<number, Move>();
     if (selected === null || !canPlay) return map;
     for (const move of availableMoves) {
-      if (move.from === selected) map.set(move.to, move);
+      if (move.from === selected) map.set(move.to, map.get(move.to) ?? move);
     }
     return map;
   }, [availableMoves, selected, canPlay]);
@@ -79,6 +114,8 @@ export function ChessGame({
   const play = useCallback(
     (move: Move) => {
       const next = applyMove(state, level, move);
+      const mover = state.turn;
+
       setShowEffects(true);
       setPast((history) => [...history, state]);
       setState(next);
@@ -88,6 +125,10 @@ export function ChessGame({
         if (next.outcome) {
           if (next.outcome.kind === "win") sounds.win();
           else sounds.draw();
+        } else if (move.promotion) {
+          sounds.promote();
+        } else if (level.rules.check && inCheckNow(next, level)) {
+          sounds.check();
         } else if (move.capture) {
           sounds.capture();
         } else {
@@ -95,11 +136,58 @@ export function ChessGame({
         }
       }
 
+      // Whether this counts as "he won": in two-player mode finishing the game
+      // is the achievement; against the computer he has to actually beat it.
+      const humanWon =
+        next.outcome?.kind !== "win"
+          ? null
+          : mode === "two"
+            ? true
+            : next.outcome.winner === "white";
+
+      // Anything the board has just proved he can do.
+      const fresh = awards(next, level, move, humanWon).filter((id) => !stickers[id]);
+      if (fresh.length > 0) {
+        fresh.forEach(onEarnSticker);
+        setEarnedThisGame((current) => [...current, ...fresh]);
+        if (soundOn) sounds.sticker();
+      }
+
+      // One thing at a time, most urgent first.
       if (next.outcome) {
+        speak(
+          say.ending(
+            humanWon,
+            nameOf(next.outcome.kind === "win" ? next.outcome.winner : "white"),
+            next.ply,
+          ),
+        );
         onFinish(next.outcome.kind === "win" ? next.outcome.winner : null);
+        return;
+      }
+
+      if (move.promotion) {
+        speak(say.promoted(theme, move.promotion));
+      } else if (level.rules.check && inCheckNow(next, level)) {
+        speak(say.inCheck(theme));
+      } else if (level.win === "raceToEnd" && oneStepFromHome(next, mover)) {
+        speak(say.nearlyHome(next.ply));
+      } else if (move.capture) {
+        speak(
+          say.tookSomething(
+            theme,
+            move.capture.piece.type,
+            mode === "one" && move.capture.piece.color === "white",
+            next.ply,
+          ),
+        );
+      } else if (mode === "one" && next.turn === "black") {
+        speak(say.thinking(next.ply));
+      } else {
+        speak(say.yourTurn(nameOf(next.turn), next.ply));
       }
     },
-    [state, level, soundOn, onFinish],
+    [state, level, soundOn, theme, mode, nameOf, stickers, onEarnSticker, onFinish, speak],
   );
 
   // The computer's turn. The move itself happens in the timeout, which also
@@ -110,7 +198,7 @@ export function ChessGame({
     const timer = setTimeout(() => {
       const move = pickMove(state, level, difficulty);
       if (move) play(move);
-    }, 550);
+    }, 620);
 
     return () => clearTimeout(timer);
   }, [computerToPlay, state, level, difficulty, play]);
@@ -129,11 +217,18 @@ export function ChessGame({
       if (pickable.has(square)) {
         setSelected(square);
         if (soundOn) sounds.pick();
+
+        const piece = state.board.squares[square];
+        if (piece) {
+          const seen = taught.includes(piece.type);
+          if (!seen) setTaught((current) => [...current, piece.type]);
+          speak(say.pickedUp(theme, piece.type, seen, square + state.ply));
+        }
         return;
       }
       setSelected(null);
     },
-    [targets, selected, pickable, play, soundOn],
+    [targets, selected, pickable, play, soundOn, state, taught, theme, speak],
   );
 
   const restart = useCallback(() => {
@@ -142,21 +237,59 @@ export function ChessGame({
     setSelected(null);
     setDismissedWin(false);
     setShowEffects(false);
-  }, [level]);
+    setEarnedThisGame([]);
+    setRound((current) => current + 1);
+    speak(say.levelWelcome(level, theme, nameOf("white")));
+  }, [level, theme, nameOf, speak]);
 
   const undo = useCallback(() => {
     if (past.length === 0) return;
     // Against the computer, step back over its reply too, so it's your go again.
     const steps = mode === "one" && past.length >= 2 ? 2 : 1;
-    setState(past[past.length - steps]);
+    const target = past[past.length - steps];
+    setState(target);
     setPast(past.slice(0, past.length - steps));
     setSelected(null);
     setDismissedWin(false);
     setShowEffects(false);
-  }, [past, mode]);
+    speak({ text: "No problem — take it back and try again!", mood: "happy" });
+  }, [past, mode, speak]);
+
+  const humanWon =
+    state.outcome?.kind === "win"
+      ? mode === "two"
+        ? true
+        : state.outcome.winner === "white"
+      : null;
 
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div className="flex min-w-0 flex-1 flex-col items-center gap-3">
+      <div
+        className="flex w-full items-center justify-between gap-2"
+        style={{ maxWidth: boardMaxWidth(level) }}
+      >
+        <Button variant="ghost" size="sm" onClick={onBackToMap} className="-ml-2">
+          <ChevronLeft />
+          Map
+        </Button>
+        <span className="truncate text-sm font-bold">
+          {level.emoji} {level.name}
+        </span>
+        <Button variant="ghost" size="sm" onClick={onHowToPlay} aria-label="How to play">
+          <HelpCircle />
+        </Button>
+      </div>
+
+      <div className="w-full" style={{ maxWidth: boardMaxWidth(level) }}>
+        <PipSays
+          text={message.text}
+          mood={message.mood}
+          colour={theme.world.guide}
+          speechKey={messageKey}
+          compact
+        />
+      </div>
+
       <div className="flex w-full gap-2" style={{ maxWidth: boardMaxWidth(level) }}>
         <PlayerBar
           color="white"
@@ -178,12 +311,6 @@ export function ChessGame({
         />
       </div>
 
-      {checkSquare !== null && (
-        <div className="rounded-full bg-red-100 px-4 py-1 text-sm font-semibold text-red-700 dark:bg-red-950 dark:text-red-300">
-          Careful — your king is in check!
-        </div>
-      )}
-
       <ChessBoard
         board={state.board}
         theme={theme}
@@ -193,6 +320,7 @@ export function ChessGame({
         lastMove={state.lastMove}
         ply={state.ply}
         showEffects={showEffects}
+        round={round}
         checkSquare={checkSquare}
         onSquare={handleSquare}
       />
@@ -209,15 +337,60 @@ export function ChessGame({
       </div>
 
       {state.outcome && !dismissedWin && (
-        <WinOverlay
+        <WinCelebration
           outcome={state.outcome}
+          theme={theme}
           nameOf={nameOf}
+          humanWon={humanWon}
+          earnedStickers={earnedThisGame}
           hasNextLevel={hasNextLevel}
           onPlayAgain={restart}
           onNextLevel={onNextLevel}
-          onDismiss={() => setDismissedWin(true)}
+          onMap={onBackToMap}
         />
       )}
     </div>
   );
+}
+
+/** True when the side that just moved has a pawn one square from the far end. */
+function oneStepFromHome(state: GameState, color: Color): boolean {
+  const goal = promotionRank(state.board, color);
+  const step = color === "white" ? -1 : 1;
+
+  return state.board.squares.some(
+    (piece, square) =>
+      piece?.color === color &&
+      piece.type === "pawn" &&
+      rankOf(state.board, square) === goal + step,
+  );
+}
+
+/** Stickers this move has just proved he can earn. */
+function awards(
+  state: GameState,
+  level: Level,
+  move: Move,
+  humanWon: boolean | null,
+): string[] {
+  const earned: string[] = [];
+
+  if (move.capture) earned.push("first-capture");
+  if (move.promotion) earned.push("promoter");
+
+  if (state.outcome?.kind === "win") {
+    const winner = state.outcome.winner;
+
+    if (state.outcome.reason === "checkmate") earned.push("checkmate");
+    if (state.outcome.reason.includes("caught the king")) earned.push("king-catcher");
+
+    // Nothing of the winner's was ever taken.
+    if (!state.captured.some((piece) => piece.color === winner)) earned.push("flawless");
+    if (state.ply <= 20) earned.push("speedy");
+
+    // Matches the star on the map: only when it was his win.
+    if (humanWon) earned.push(`level-${level.id}`);
+  }
+
+  return earned;
 }

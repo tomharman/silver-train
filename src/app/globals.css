@@ -364,6 +364,136 @@
   animation: chess-burst 620ms ease-out both;
 }
 
+/* --- Pip, the map, and the celebration --- */
+
+@keyframes chess-pip-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-8%) rotate(2deg);
+  }
+}
+
+@keyframes chess-pip-cheer {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-12%) scale(1.06) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-6%) scale(1.03) rotate(5deg);
+  }
+}
+
+@keyframes chess-speech {
+  0% {
+    transform: scale(0.92) translateX(-6px);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.02) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* The stop he's up to, quietly asking to be tapped. */
+@keyframes chess-beacon {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(240, 168, 30, 0.7);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(240, 168, 30, 0);
+    transform: scale(1.06);
+  }
+}
+
+@keyframes chess-drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+@keyframes chess-confetti {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) translateX(var(--chess-drift, 0px)) rotate(540deg);
+    opacity: 0;
+  }
+}
+
+@keyframes chess-sticker-in {
+  0% {
+    transform: scale(0) rotate(-30deg);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.2) rotate(8deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes chess-rise {
+  0% {
+    transform: translateY(16px) scale(0.96);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.chess-pip-bob {
+  animation: chess-pip-bob 3.4s ease-in-out infinite;
+}
+.chess-pip-cheer {
+  animation: chess-pip-cheer 900ms ease-in-out infinite;
+}
+.chess-speech {
+  animation: chess-speech 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.chess-beacon {
+  animation: chess-beacon 2s ease-in-out infinite;
+}
+.chess-drift {
+  animation: chess-drift 6s ease-in-out infinite;
+}
+.chess-confetti {
+  animation-name: chess-confetti;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+.chess-sticker-in {
+  animation: chess-sticker-in 520ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.chess-rise {
+  animation: chess-rise 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .chess-pop {
   animation: chess-pop 180ms ease-out;
 }
@@ -378,9 +508,22 @@
   .chess-pop,
   .chess-throb,
   .chess-burst,
+  .chess-pip-bob,
+  .chess-pip-cheer,
+  .chess-speech,
+  .chess-beacon,
+  .chess-drift,
+  .chess-confetti,
+  .chess-sticker-in,
+  .chess-rise,
   [class*="chess-travel-"],
   [class*="chess-victim-"] {
     animation: none !important;
+  }
+
+  /* Confetti falls from off-screen, so with no animation it must not sit there. */
+  .chess-confetti {
+    display: none;
   }
 
   /* These two finish invisible, so without the animation they must start that
@@ -393,5 +536,31 @@
   /* Beats the per-piece duration set inline. */
   .chess-piece {
     transition-duration: 1ms !important;
+  }
+}
+
+/* Pieces taking their places at the start of a game. */
+@keyframes chess-arrive {
+  0% {
+    transform: translateY(-40%) scale(0.4);
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(6%) scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.chess-arrive {
+  animation: chess-arrive 420ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chess-arrive {
+    animation: none !important;
   }
 }

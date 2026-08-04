@@ -131,10 +131,32 @@ export interface PieceSkin {
   travel?: TravelStyle;
 }
 
+/**
+ * The place a theme happens in. A theme that only swaps the pieces is a skin;
+ * changing the board, the frame and the sky underneath it is what makes
+ * choosing one feel like going somewhere.
+ */
+export interface World {
+  /** Kid-facing name of the place — "The Jungle", "Deep Space". */
+  name: string;
+  lightSquare: string;
+  darkSquare: string;
+  /** The wooden surround the board sits in. */
+  frame: string;
+  /** CSS background for the map screen. */
+  backdrop: string;
+  backdropDark: string;
+  /** Pip's colour here. */
+  guide: string;
+  /** Decoration scattered around the map. Purely atmosphere. */
+  scenery: string[];
+}
+
 export interface PieceTheme {
   id: string;
   name: string;
   emoji: string;
+  world: World;
   /**
    * `art` draws the built-in SVG chess pieces, coloured per side. `token` sits
    * the emoji or artwork on a light or dark disc, which is how you tell the two

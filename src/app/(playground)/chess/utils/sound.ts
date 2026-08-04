@@ -79,8 +79,33 @@ export const sounds = {
     blip(180, 0.14, "square", 0, 0.1);
     blip(90, 0.18, "sine", 0.02, 0.12);
   },
+  /** A rising run — a pawn just became something much better. */
+  promote: () => {
+    [523, 659, 784, 988, 1319].forEach((note, index) =>
+      blip(note, 0.16, "triangle", index * 0.07, 0.11),
+    );
+  },
+  /** Two low knocks. Meant to prickle slightly: your king is in trouble. */
+  check: () => {
+    blip(300, 0.12, "square", 0, 0.09);
+    blip(240, 0.16, "square", 0.14, 0.09);
+  },
+  /** Sparkle for a new sticker. */
+  sticker: () => {
+    [1047, 1319, 1568].forEach((note, index) => blip(note, 0.12, "sine", index * 0.06, 0.09));
+  },
   win: () => {
-    [523, 659, 784, 1047].forEach((note, index) => blip(note, 0.18, "triangle", index * 0.1, 0.12));
+    // A proper little fanfare, because winning should sound like winning.
+    const fanfare: [number, number][] = [
+      [523, 0],
+      [659, 0.1],
+      [784, 0.2],
+      [1047, 0.3],
+      [784, 0.45],
+      [1047, 0.55],
+      [1319, 0.68],
+    ];
+    fanfare.forEach(([note, at]) => blip(note, 0.22, "triangle", at, 0.12));
   },
   draw: () => {
     blip(400, 0.16, "sine", 0, 0.1);

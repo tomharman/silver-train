@@ -13,9 +13,6 @@ import {
   travelStyleFor,
 } from "../utils/motion";
 
-const LIGHT_SQUARE = "#F6E7C6";
-const DARK_SQUARE = "#6FA8A0";
-
 interface ChessBoardProps {
   board: Board;
   theme: PieceTheme;
@@ -29,6 +26,8 @@ interface ChessBoardProps {
   ply: number;
   /** False after an undo or a restart, where a flourish would be a lie. */
   showEffects: boolean;
+  /** Bumped when a fresh game starts, so the pieces march on again. */
+  round: number;
   checkSquare: number | null;
   onSquare: (square: number) => void;
 }
@@ -42,6 +41,7 @@ export function ChessBoard({
   lastMove,
   ply,
   showEffects,
+  round,
   checkSquare,
   onSquare,
 }: ChessBoardProps) {
@@ -76,7 +76,7 @@ export function ChessBoard({
   return (
     <div
       className="w-full touch-manipulation select-none rounded-2xl p-2 shadow-lg sm:p-3"
-      style={{ background: "#4A3B2E", maxWidth: boardMaxWidth(board) }}
+      style={{ background: theme.world.frame, maxWidth: boardMaxWidth(board) }}
     >
       <div
         ref={ref}
@@ -110,7 +110,7 @@ export function ChessBoard({
                   onClick={() => onSquare(square)}
                   className="relative flex aspect-square touch-manipulation items-center justify-center border-0 p-0 disabled:cursor-default"
                   style={{
-                    background: isLight ? LIGHT_SQUARE : DARK_SQUARE,
+                    background: isLight ? theme.world.lightSquare : theme.world.darkSquare,
                     cursor: isActive ? "pointer" : "default",
                   }}
                 >
@@ -133,10 +133,17 @@ export function ChessBoard({
                   )}
 
                   {/* Move hints: a fat dot on an empty square, a ring on something to take. */}
+                  {/* Dark core, light halo: the one combination that stays
+                      visible on both square colours in every world. */}
                   {target && !occupied && (
                     <span
-                      className="chess-throb pointer-events-none absolute rounded-full bg-slate-900/35"
-                      style={{ width: "34%", height: "34%" }}
+                      className="chess-throb pointer-events-none absolute rounded-full"
+                      style={{
+                        width: "32%",
+                        height: "32%",
+                        background: "rgba(20,22,30,0.45)",
+                        boxShadow: "0 0 0 3px rgba(255,255,255,0.55)",
+                      }}
                     />
                   )}
 
@@ -178,7 +185,9 @@ export function ChessBoard({
 
               return (
                 <div
-                  key={piece.id}
+                  // The round is in the key so restarting remounts every piece
+                  // and they take their places again.
+                  key={`${round}:${piece.id}`}
                   className="chess-piece absolute left-0 top-0"
                   style={{
                     width: squareSize,
@@ -195,12 +204,15 @@ export function ChessBoard({
                     // stayed put keep the same key and stay still.
                     key={justMoved ? `travel-${ply}` : "resting"}
                     className={`flex h-full w-full items-center justify-center ${
-                      justMoved ? `chess-travel-${style}` : ""
+                      justMoved ? `chess-travel-${style}` : ply === 0 ? "chess-arrive" : ""
                     }`}
                     style={
                       justMoved
                         ? { animationDuration: `${travelDuration(style)}ms` }
-                        : undefined
+                        : ply === 0
+                          ? // Staggered across the board so they arrive as a wave.
+                            { animationDelay: `${(square % board.width) * 45 + Math.floor(square / board.width) * 30}ms` }
+                          : undefined
                     }
                   >
                     <PieceToken piece={piece} theme={theme} size={squareSize} />
