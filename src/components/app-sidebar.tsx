@@ -27,6 +27,10 @@ const data = {
       url: "/chess",
     },
     {
+      title: "Reef Quest 3D",
+      url: "/chess-3d",
+    },
+    {
       title: "Transaction List",
       url: "/transaction-list",
     },
