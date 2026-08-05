@@ -11,7 +11,7 @@ import type { SceneConfig } from "../data/scenes";
 import { cameraFor, creatureScaleFor, squareToWorld, type CameraAngle } from "../utils/board-space";
 import { Creature } from "./creature";
 import { WorldScene } from "./world-scene";
-import { ReefBoard } from "./reef-board";
+import { ReefBoard, type RailLabel } from "./reef-board";
 import { SquareProjector } from "./square-overlay";
 
 /**
@@ -88,6 +88,7 @@ interface QuestSceneProps {
   /** One palette per side, chosen in Setup. */
   palettes: Record<"white" | "black", Palette>;
   angle: CameraAngle;
+  rails: { near: RailLabel; far: RailLabel };
 }
 
 export function QuestScene({
@@ -100,6 +101,7 @@ export function QuestScene({
   scene,
   palettes,
   angle,
+  rails,
 }: QuestSceneProps) {
   const board = state.board;
   const radius = Math.max(board.width, board.height) * 0.62 + 1.6;
@@ -132,6 +134,7 @@ export function QuestScene({
       <ReefBoard
         board={board}
         scene={scene}
+        rails={rails}
         selected={selected}
         targets={targets}
         lastMove={state.lastMove}

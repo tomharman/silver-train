@@ -212,7 +212,10 @@ function seahorse(): Part[] {
 
 function turtle(): Part[] {
   const parts: Part[] = [
-    { slot: "accent", geometry: dome(0.46), matrix: transform([0, 0.28, 0], [0, 0, 0], [1, 0.62, 1.05]) },
+    // The shell is the whole turtle at a glance, so it wears the team colour.
+    // It used to be the accent, which is why two players with different
+    // palettes could both end up with a yellow turtle.
+    { slot: "body", geometry: dome(0.46), matrix: transform([0, 0.28, 0], [0, 0, 0], [1, 0.62, 1.05]) },
     { slot: "belly", geometry: sphere(0.44, 12, 8), matrix: transform([0, 0.16, 0], [0, 0, 0], [1, 0.3, 1.05]) },
     { slot: "belly", geometry: sphere(0.19, 12, 10), matrix: transform([0, 0.24, 0.46], [0, 0, 0], [0.85, 0.8, 1]) },
   ];
@@ -220,7 +223,7 @@ function turtle(): Part[] {
   for (const i of [0, 1, 2]) {
     const angle = (i / 3) * Math.PI * 2;
     parts.push({
-      slot: "body",
+      slot: "accent",
       geometry: sphere(0.11, 8, 6),
       matrix: transform([Math.cos(angle) * 0.26, 0.42, Math.sin(angle) * 0.28], [0, 0, 0], [1, 0.45, 1]),
     });

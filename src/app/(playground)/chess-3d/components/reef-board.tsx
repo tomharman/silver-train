@@ -6,6 +6,7 @@ import { useRef } from "react";
 import * as THREE from "three";
 
 import type { Board, Move } from "../../chess/types";
+import { RailName } from "./rail-name";
 import type { SceneConfig } from "../data/scenes";
 import { everySquare, isLightSquare, squareToWorld, TILE } from "../utils/board-space";
 
@@ -91,9 +92,17 @@ function Bead({ position }: { position: [number, number, number] }) {
   );
 }
 
+export interface RailLabel {
+  name: string;
+  colour: string;
+  active: boolean;
+}
+
 interface ReefBoardProps {
   board: Board;
   scene: SceneConfig;
+  /** Names painted on the rail each player sits behind. */
+  rails: { near: RailLabel; far: RailLabel };
   selected: number | null;
   targets: Map<number, Move>;
   lastMove: Move | null;
@@ -104,6 +113,7 @@ interface ReefBoardProps {
 export function ReefBoard({
   board,
   scene,
+  rails,
   selected,
   targets,
   lastMove,
@@ -112,18 +122,44 @@ export function ReefBoard({
 }: ReefBoardProps) {
   const width = board.width * TILE;
   const depth = board.height * TILE;
+  // A wider rail front and back, so each player's name has somewhere to live.
+  const rail = 1.7;
+  // How far out along that rail the name sits.
+  //
+  // Closer in than the middle of the rail, which is the opposite of what you
+  // would guess. The far name is read past its owner's back rank, and moving
+  // it outward moves it *up* the picture — straight into their heads. Tucked
+  // in, it sits below them.
+  const nameAt = depth / 2 + rail * 0.48;
 
   return (
     <group>
       {/* The plinth the board is set into. */}
       <mesh position={[0, -0.16, 0]} receiveShadow>
-        <boxGeometry args={[width + 0.9, 0.32, depth + 0.9]} />
+        <boxGeometry args={[width + 0.9, 0.32, depth + rail * 2]} />
         <meshStandardMaterial color={scene.board.frame} roughness={0.9} />
       </mesh>
       <mesh position={[0, -0.44, 0]}>
-        <boxGeometry args={[width + 1.5, 0.3, depth + 1.5]} />
+        <boxGeometry args={[width + 1.5, 0.3, depth + rail * 2 + 0.6]} />
         <meshStandardMaterial color={scene.board.base} roughness={1} />
       </mesh>
+
+      <RailName
+        name={rails.near.name}
+        colour={rails.near.colour}
+        depth={nameAt}
+        side={1}
+        active={rails.near.active}
+        width={width}
+      />
+      <RailName
+        name={rails.far.name}
+        colour={rails.far.colour}
+        depth={nameAt}
+        side={-1}
+        active={rails.far.active}
+        width={width}
+      />
 
       {/* Squares */}
       {everySquare(board).map((square) => {

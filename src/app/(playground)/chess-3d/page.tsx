@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from "react";
-import { RotateCcw, Settings2, Undo2, Volume2, VolumeX } from "lucide-react";
+import { RotateCcw, Settings2, Undo2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -18,7 +18,7 @@ import { useStoredState } from "../chess/hooks/use-stored-state";
 import type { Color, Difficulty, GameState, Mode, Move, Piece, PieceType } from "../chess/types";
 import { listenForUnlock, sounds } from "../chess/utils/sound";
 import { SquareButtons } from "./components/square-overlay";
-import { PALETTES, getPalette, type Palette } from "./data/palettes";
+import { PALETTES, getPalette } from "./data/palettes";
 import { SCENES, getScene } from "./data/scenes";
 import type { CameraAngle } from "./utils/board-space";
 import * as reefSound from "./utils/reef-sound";
@@ -332,43 +332,25 @@ export default function ReefQuestPage() {
           scene={scene}
           palettes={palettes}
           angle={angle}
+          rails={{
+            near: {
+              name: nameOf("white"),
+              colour: palettes.white.body,
+              active: state.turn === "white" && !state.outcome,
+            },
+            far: {
+              name: nameOf("black"),
+              colour: palettes.black.body,
+              active: state.turn === "black" && !state.outcome,
+            },
+          }}
         />
       </div>
 
       <SquareButtons board={state.board} active={active} onSquare={handleSquare} />
 
-      <div className="pointer-events-none relative z-10 flex items-start justify-between gap-2 p-3">
-        <div className="pointer-events-auto rounded-2xl bg-black/45 px-3 py-2 backdrop-blur-sm">
-          <h1 className="text-base font-bold leading-tight text-white">Reef Quest</h1>
-          <p className="text-[11px] leading-tight text-cyan-100/80">
-            {level.emoji} {level.name}
-          </p>
-        </div>
-        <div className="pointer-events-auto flex items-center gap-1.5">
-          <Button
-            size="icon"
-            variant="secondary"
-            className="size-9"
-            aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
-            onClick={() => {
-              const next = !soundOn;
-              setSoundOn(next);
-              // A deliberate tap is the best moment to wake iOS audio up, and
-              // hearing something back confirms it worked.
-              if (next) reefSound.creatureGrew();
-            }}
-          >
-            {soundOn ? <Volume2 /> : <VolumeX />}
-          </Button>
-          <Button size="sm" variant="secondary" onClick={() => setShowSetup(!showSetup)}>
-            <Settings2 />
-            Setup
-          </Button>
-        </div>
-      </div>
-
       {showSetup && (
-        <div className="pointer-events-auto relative z-10 mx-3 max-h-[52vh] overflow-y-auto rounded-2xl bg-black/70 p-3 backdrop-blur-sm">
+        <div className="pointer-events-auto absolute inset-x-3 top-3 z-20 max-h-[62vh] overflow-y-auto rounded-2xl bg-black/75 p-3 backdrop-blur-sm">
           <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             <Choice
               label="Who's playing"
@@ -393,6 +375,21 @@ export default function ReefQuestPage() {
               label="Danger rings"
               value={showDanger ? "on" : "off"}
               onChange={(value) => setShowDanger(value === "on")}
+              options={[
+                { value: "off", label: "Off" },
+                { value: "on", label: "On" },
+              ]}
+            />
+            <Choice
+              label="Sound"
+              value={soundOn ? "on" : "off"}
+              onChange={(value) => {
+                const next = value === "on";
+                setSoundOn(next);
+                // A deliberate tap is the best moment to wake iOS audio up, and
+                // hearing something back confirms it worked.
+                if (next) reefSound.creatureGrew();
+              }}
               options={[
                 { value: "off", label: "Off" },
                 { value: "on", label: "On" },
@@ -424,18 +421,23 @@ export default function ReefQuestPage() {
             />
           </div>
 
-          <div className="mt-3 grid gap-2 sm:grid-cols-2">
-            <ColourPicker
-              label={`${nameOf("white")}'s colour`}
+          <div className="mt-3 grid gap-3 sm:grid-cols-2">
+            <ColourRow
+              label={nameOf("white")}
               value={whitePalette}
-              taken={blackPalette}
-              onChange={setWhitePalette}
+              onPick={(id) => {
+                // Taking the other player's colour hands them yours.
+                if (id === blackPalette) setBlackPalette(whitePalette);
+                setWhitePalette(id);
+              }}
             />
-            <ColourPicker
-              label={`${nameOf("black")}'s colour`}
+            <ColourRow
+              label={nameOf("black")}
               value={blackPalette}
-              taken={whitePalette}
-              onChange={setBlackPalette}
+              onPick={(id) => {
+                if (id === whitePalette) setWhitePalette(blackPalette);
+                setBlackPalette(id);
+              }}
             />
           </div>
 
@@ -459,27 +461,14 @@ export default function ReefQuestPage() {
       <div className="flex-1" />
 
       <div className="pointer-events-none relative z-10 flex flex-col gap-2 p-3">
-        <div className="pointer-events-auto flex gap-2">
-          <TeamCard
-            palette={palettes.white}
-            name={nameOf("white")}
-            turn={state.turn === "white" && !state.outcome}
-          />
-          <TeamCard
-            palette={palettes.black}
-            name={nameOf("black")}
-            turn={state.turn === "black" && !state.outcome}
-            thinking={computerToPlay}
-          />
-        </div>
-
-        <div className="pointer-events-auto rounded-2xl bg-black/50 p-2 backdrop-blur-sm">
+        <div className="pointer-events-auto">
           <PipSays
             text={message.text}
             mood={message.mood}
             colour={scene.guide}
             speechKey={messageKey}
             compact
+            tone="dark"
           />
         </div>
 
@@ -491,6 +480,14 @@ export default function ReefQuestPage() {
           <Button variant="secondary" size="lg" onClick={restart}>
             <RotateCcw />
             Start again
+          </Button>
+          <Button
+            variant={showSetup ? "default" : "secondary"}
+            size="lg"
+            onClick={() => setShowSetup(!showSetup)}
+            aria-label="Setup"
+          >
+            <Settings2 />
           </Button>
         </div>
       </div>
@@ -528,83 +525,51 @@ export default function ReefQuestPage() {
   );
 }
 
-function TeamCard({
-  palette,
-  name,
-  turn,
-  thinking = false,
-}: {
-  palette: Palette;
-  name: string;
-  turn: boolean;
-  thinking?: boolean;
-}) {
-  return (
-    <div
-      className={`flex flex-1 items-center gap-2 rounded-2xl px-3 py-1.5 backdrop-blur-sm transition-colors ${
-        turn ? "bg-white/90" : "bg-black/45"
-      }`}
-    >
-      <span
-        className="size-5 shrink-0 rounded-full"
-        style={{ background: palette.body, boxShadow: `0 0 0 2px ${palette.accent}` }}
-      />
-      <div className="min-w-0">
-        <div className={`truncate text-sm font-bold ${turn ? "text-slate-900" : "text-white"}`}>
-          {name}
-        </div>
-        <div className={`truncate text-[11px] ${turn ? "text-slate-600" : "text-cyan-100/70"}`}>
-          {thinking ? "thinking…" : turn ? "your go!" : palette.name}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 /**
  * Colour swatches, one row per player.
  *
- * Whatever the other player has taken is disabled rather than hidden: two
- * children picking near-identical colours would make the board unreadable, and
- * seeing the colour greyed out explains why far better than it quietly
- * vanishing would.
+ * The first version disabled whatever the other player had taken, which meant
+ * half the choices were dead and a child tapping one got nothing at all. Now
+ * picking a colour someone else holds simply swaps the two of you — nobody is
+ * ever blocked, no swatch is ever inert, and the trade explains itself the
+ * moment you see the other row change.
  */
-function ColourPicker({
+function ColourRow({
   label,
   value,
-  taken,
-  onChange,
+  onPick,
 }: {
   label: string;
   value: string;
-  taken: string;
-  onChange: (id: string) => void;
+  onPick: (id: string) => void;
 }) {
   return (
     <div>
-      <div className="mb-1 truncate text-[10px] font-bold uppercase tracking-wide text-cyan-100/70">
+      <div className="mb-1.5 truncate text-[10px] font-bold uppercase tracking-wide text-white/70">
         {label}
       </div>
-      <div className="flex flex-wrap gap-1.5">
+      <div className="flex flex-wrap gap-2">
         {PALETTES.map((palette) => {
-          const isTaken = palette.id === taken;
-          const isMine = palette.id === value;
+          const mine = palette.id === value;
           return (
             <button
               key={palette.id}
               type="button"
-              disabled={isTaken}
-              onClick={() => onChange(palette.id)}
-              aria-label={`${palette.name}${isTaken ? " — already taken" : ""}`}
-              title={isTaken ? `${palette.name} (taken)` : palette.name}
-              className={`size-8 rounded-full transition-transform active:scale-90 disabled:opacity-25 ${
-                isMine ? "ring-2 ring-white ring-offset-2 ring-offset-black/40" : ""
+              onClick={() => onPick(palette.id)}
+              aria-label={palette.name}
+              aria-pressed={mine}
+              title={palette.name}
+              className={`relative size-9 rounded-full transition-transform active:scale-90 ${
+                mine ? "ring-[3px] ring-white" : "ring-1 ring-white/25 hover:ring-white/60"
               }`}
-              style={{
-                background: palette.body,
-                boxShadow: `inset 0 -5px 0 0 ${palette.accent}`,
-              }}
-            />
+              style={{ background: palette.body, boxShadow: `inset 0 -6px 0 0 ${palette.accent}` }}
+            >
+              {mine && (
+                <span className="absolute inset-0 grid place-items-center text-sm font-black text-white drop-shadow">
+                  ✓
+                </span>
+              )}
+            </button>
           );
         })}
       </div>

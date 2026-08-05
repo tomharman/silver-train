@@ -140,20 +140,31 @@ function Face({ mood }: { mood: Mood }) {
   );
 }
 
-/** Pip plus a speech bubble. The bubble re-keys on `speechKey` so it pops. */
+/**
+ * Pip plus a speech bubble. The bubble re-keys on `speechKey` so it pops.
+ *
+ * `tone` matters more than it looks. Over the flat board a white bubble is
+ * right; over a 3D scene it needs to be dark, or it sits in a second panel to
+ * hold it and you end up with a box inside a box.
+ */
 export function PipSays({
   text,
   mood,
   colour,
   speechKey,
   compact = false,
+  tone = "light",
 }: {
   text: string;
   mood: Mood;
   colour: string;
   speechKey: string | number;
   compact?: boolean;
+  tone?: "light" | "dark";
 }) {
+  const fill = tone === "dark" ? "rgba(12,17,22,0.88)" : "var(--card)";
+  const ink = tone === "dark" ? "#F4FAFF" : "var(--card-foreground)";
+
   return (
     <div className="flex w-full items-center gap-2">
       <span className="chess-pip-bob shrink-0">
@@ -161,15 +172,26 @@ export function PipSays({
       </span>
       <div
         key={speechKey}
-        className="chess-speech relative min-w-0 flex-1 rounded-2xl border-2 bg-card px-3 py-2"
-        style={{ borderColor: colour }}
+        className="chess-speech relative min-w-0 flex-1 rounded-2xl border-2 px-3 py-2"
+        style={{ borderColor: colour, background: fill, color: ink }}
       >
-        {/* The bubble's little tail. */}
+        {/*
+          The tail is a rotated square showing only its two outer borders. On
+          its own that leaves the bubble's own left border running straight
+          through the join, which read as a separate floating chevron — so a
+          sliver of the bubble's fill is painted over that seam afterwards.
+        */}
         <span
-          className="absolute -left-[9px] top-1/2 size-3 -translate-y-1/2 rotate-45 border-b-2 border-l-2 bg-card"
-          style={{ borderColor: colour }}
+          aria-hidden="true"
+          className="absolute -left-[9px] top-1/2 size-3 -translate-y-1/2 rotate-45 border-b-2 border-l-2"
+          style={{ borderColor: colour, background: fill }}
         />
-        <p className="text-sm font-medium leading-snug">{text}</p>
+        <span
+          aria-hidden="true"
+          className="absolute -left-[3px] top-1/2 h-3 w-[4px] -translate-y-1/2"
+          style={{ background: fill }}
+        />
+        <p className="relative text-sm font-medium leading-snug">{text}</p>
       </div>
     </div>
   );
