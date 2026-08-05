@@ -6,6 +6,7 @@ import { useRef } from "react";
 import * as THREE from "three";
 
 import type { Board, Move } from "../../chess/types";
+import type { SceneConfig } from "../data/scenes";
 import { everySquare, isLightSquare, squareToWorld, TILE } from "../utils/board-space";
 
 /**
@@ -16,10 +17,6 @@ import { everySquare, isLightSquare, squareToWorld, TILE } from "../utils/board-
  * here a flat dot disappears the moment the camera tilts, so a legal move is a
  * ring that stands slightly proud of the board and pulses.
  */
-
-const LIGHT = "#FBEFCF";
-const DARK = "#3E9E9C";
-const STONE = "#2A6470";
 
 function Ring({
   position,
@@ -96,6 +93,7 @@ function Bead({ position }: { position: [number, number, number] }) {
 
 interface ReefBoardProps {
   board: Board;
+  scene: SceneConfig;
   selected: number | null;
   targets: Map<number, Move>;
   lastMove: Move | null;
@@ -105,6 +103,7 @@ interface ReefBoardProps {
 
 export function ReefBoard({
   board,
+  scene,
   selected,
   targets,
   lastMove,
@@ -119,11 +118,11 @@ export function ReefBoard({
       {/* The plinth the board is set into. */}
       <mesh position={[0, -0.16, 0]} receiveShadow>
         <boxGeometry args={[width + 0.9, 0.32, depth + 0.9]} />
-        <meshStandardMaterial color={STONE} roughness={0.9} />
+        <meshStandardMaterial color={scene.board.frame} roughness={0.9} />
       </mesh>
       <mesh position={[0, -0.44, 0]}>
         <boxGeometry args={[width + 1.5, 0.3, depth + 1.5]} />
-        <meshStandardMaterial color="#1D4C57" roughness={1} />
+        <meshStandardMaterial color={scene.board.base} roughness={1} />
       </mesh>
 
       {/* Squares */}
@@ -133,7 +132,7 @@ export function ReefBoard({
           <mesh key={square} position={[x, 0.005, z]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
             <planeGeometry args={[TILE * 0.97, TILE * 0.97]} />
             <meshStandardMaterial
-              color={isLightSquare(board, square) ? LIGHT : DARK}
+              color={isLightSquare(board, square) ? scene.board.light : scene.board.dark}
               roughness={0.75}
             />
           </mesh>

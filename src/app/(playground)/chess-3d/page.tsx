@@ -16,9 +16,12 @@ import { applyMove, createGame, inCheckNow } from "../chess/engine/game";
 import { legalMoves } from "../chess/engine/moves";
 import { useStoredState } from "../chess/hooks/use-stored-state";
 import type { Color, Difficulty, GameState, Mode, Move, Piece, PieceType } from "../chess/types";
-import { sounds, unlockAudio } from "../chess/utils/sound";
+import { listenForUnlock, sounds } from "../chess/utils/sound";
 import { SquareButtons } from "./components/square-overlay";
-import { TEAMS } from "./data/creatures";
+import { PALETTES, getPalette, type Palette } from "./data/palettes";
+import { SCENES, getScene } from "./data/scenes";
+import type { CameraAngle } from "./utils/board-space";
+import * as reefSound from "./utils/reef-sound";
 import * as talk from "./utils/reef-talk";
 
 /**
@@ -38,7 +41,6 @@ const QuestScene = dynamic(
 );
 
 const NO_FLAGS: Record<string, boolean> = {};
-const GUIDE = "#3FC7B4";
 
 let webglAnswer: boolean | null = null;
 
@@ -71,6 +73,16 @@ export default function ReefQuestPage() {
   const [playerOne] = useStoredState("chess-player-one", "Player 1");
   const [playerTwo] = useStoredState("chess-player-two", "Player 2");
   const [won, setWon] = useStoredState("reef-progress", NO_FLAGS);
+  const [sceneId, setSceneId] = useStoredState("reef-scene", SCENES[0].id);
+  const [angle, setAngle] = useStoredState<CameraAngle>("reef-angle", "normal");
+  const [whitePalette, setWhitePalette] = useStoredState("reef-palette-white", PALETTES[0].id);
+  const [blackPalette, setBlackPalette] = useStoredState("reef-palette-black", PALETTES[1].id);
+
+  const scene = getScene(sceneId);
+  const palettes = useMemo(
+    () => ({ white: getPalette(whitePalette), black: getPalette(blackPalette) }),
+    [whitePalette, blackPalette],
+  );
 
   const level = getLevel(levelId);
   const webgl = useWebGL();
@@ -84,7 +96,7 @@ export default function ReefQuestPage() {
   const [dismissedWin, setDismissedWin] = useState(false);
 
   const [message, setMessage] = useState<talk.Line>(() =>
-    talk.welcome(level, playerOne || "Player 1"),
+    talk.welcome(level, playerOne || "Player 1", SCENES[0].welcome),
   );
   const [messageKey, setMessageKey] = useState(0);
 
@@ -93,11 +105,9 @@ export default function ReefQuestPage() {
     setMessageKey((key) => key + 1);
   }, []);
 
-  useEffect(() => {
-    const wake = () => unlockAudio();
-    window.addEventListener("pointerdown", wake, { capture: true });
-    return () => window.removeEventListener("pointerdown", wake, { capture: true });
-  }, []);
+  // iOS needs a real gesture before it will make a sound, and it will accept
+  // several different ones. This wires up all of them.
+  useEffect(() => listenForUnlock(), []);
 
   const nameOf = useCallback(
     (color: Color) => {
@@ -167,13 +177,14 @@ export default function ReefQuestPage() {
       );
 
       if (soundOn) {
+        // Every creature has its own voice, so you can hear which one moved.
         if (next.outcome) {
           if (next.outcome.kind === "win") sounds.win();
           else sounds.draw();
-        } else if (move.promotion) sounds.promote();
-        else if (level.rules.check && inCheckNow(next, level)) sounds.check();
-        else if (move.capture) sounds.capture();
-        else sounds.move();
+        } else if (move.promotion) reefSound.creatureGrew();
+        else if (level.rules.check && inCheckNow(next, level)) reefSound.reefAlarm();
+        else if (move.capture) reefSound.creatureEaten();
+        else reefSound.creatureMove(move.piece);
       }
 
       const humanWon =
@@ -235,7 +246,7 @@ export default function ReefQuestPage() {
       }
       if (pickable.has(square)) {
         setSelected(square);
-        if (soundOn) sounds.pick();
+        if (soundOn) reefSound.creaturePick();
         const piece = state.board.squares[square];
         if (piece) {
           const seen = taught.includes(piece.type);
@@ -260,9 +271,9 @@ export default function ReefQuestPage() {
       setTaught([]);
       setDismissedWin(false);
       setShowSetup(false);
-      speak(talk.welcome(next, playerOne || "Player 1"));
+      speak(talk.welcome(next, playerOne || "Player 1", getScene(sceneId).welcome));
     },
-    [setLevelId, speak, playerOne],
+    [setLevelId, speak, playerOne, sceneId],
   );
 
   const restart = useCallback(() => startLevel(level.id), [startLevel, level.id]);
@@ -318,6 +329,9 @@ export default function ReefQuestPage() {
           inDanger={inDanger}
           checkSquare={checkSquare}
           dying={dying}
+          scene={scene}
+          palettes={palettes}
+          angle={angle}
         />
       </div>
 
@@ -336,7 +350,13 @@ export default function ReefQuestPage() {
             variant="secondary"
             className="size-9"
             aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
-            onClick={() => setSoundOn(!soundOn)}
+            onClick={() => {
+              const next = !soundOn;
+              setSoundOn(next);
+              // A deliberate tap is the best moment to wake iOS audio up, and
+              // hearing something back confirms it worked.
+              if (next) reefSound.creatureGrew();
+            }}
           >
             {soundOn ? <Volume2 /> : <VolumeX />}
           </Button>
@@ -348,8 +368,8 @@ export default function ReefQuestPage() {
       </div>
 
       {showSetup && (
-        <div className="pointer-events-auto relative z-10 mx-3 rounded-2xl bg-black/60 p-3 backdrop-blur-sm">
-          <div className="grid gap-2 sm:grid-cols-3">
+        <div className="pointer-events-auto relative z-10 mx-3 max-h-[52vh] overflow-y-auto rounded-2xl bg-black/70 p-3 backdrop-blur-sm">
+          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             <Choice
               label="Who's playing"
               value={mode}
@@ -378,8 +398,48 @@ export default function ReefQuestPage() {
                 { value: "on", label: "On" },
               ]}
             />
+            <Choice
+              label="Camera"
+              value={angle}
+              onChange={setAngle}
+              options={[
+                { value: "low" as CameraAngle, label: "Low" },
+                { value: "normal" as CameraAngle, label: "Mid" },
+                { value: "high" as CameraAngle, label: "High" },
+                { value: "top" as CameraAngle, label: "Top" },
+              ]}
+            />
+            <Choice
+              label="Where to play"
+              value={sceneId}
+              onChange={(id) => {
+                setSceneId(id);
+                const next = getScene(id);
+                speak({ text: `Off we go to ${next.name}!`, mood: "cheer" });
+              }}
+              options={SCENES.map((candidate) => ({
+                value: candidate.id,
+                label: `${candidate.emoji} ${candidate.short}`,
+              }))}
+            />
           </div>
-          <div className="mt-2 flex gap-1.5 overflow-x-auto">
+
+          <div className="mt-3 grid gap-2 sm:grid-cols-2">
+            <ColourPicker
+              label={`${nameOf("white")}'s colour`}
+              value={whitePalette}
+              taken={blackPalette}
+              onChange={setWhitePalette}
+            />
+            <ColourPicker
+              label={`${nameOf("black")}'s colour`}
+              value={blackPalette}
+              taken={whitePalette}
+              onChange={setBlackPalette}
+            />
+          </div>
+
+          <div className="mt-3 flex gap-1.5 overflow-x-auto">
             {LEVELS.map((candidate) => (
               <button
                 key={candidate.id}
@@ -401,12 +461,12 @@ export default function ReefQuestPage() {
       <div className="pointer-events-none relative z-10 flex flex-col gap-2 p-3">
         <div className="pointer-events-auto flex gap-2">
           <TeamCard
-            color="white"
+            palette={palettes.white}
             name={nameOf("white")}
             turn={state.turn === "white" && !state.outcome}
           />
           <TeamCard
-            color="black"
+            palette={palettes.black}
             name={nameOf("black")}
             turn={state.turn === "black" && !state.outcome}
             thinking={computerToPlay}
@@ -417,7 +477,7 @@ export default function ReefQuestPage() {
           <PipSays
             text={message.text}
             mood={message.mood}
-            colour={GUIDE}
+            colour={scene.guide}
             speechKey={messageKey}
             compact
           />
@@ -469,17 +529,16 @@ export default function ReefQuestPage() {
 }
 
 function TeamCard({
-  color,
+  palette,
   name,
   turn,
   thinking = false,
 }: {
-  color: Color;
+  palette: Palette;
   name: string;
   turn: boolean;
   thinking?: boolean;
 }) {
-  const team = TEAMS[color];
   return (
     <div
       className={`flex flex-1 items-center gap-2 rounded-2xl px-3 py-1.5 backdrop-blur-sm transition-colors ${
@@ -488,15 +547,66 @@ function TeamCard({
     >
       <span
         className="size-5 shrink-0 rounded-full"
-        style={{ background: team.body, boxShadow: `0 0 0 2px ${team.accent}` }}
+        style={{ background: palette.body, boxShadow: `0 0 0 2px ${palette.accent}` }}
       />
       <div className="min-w-0">
         <div className={`truncate text-sm font-bold ${turn ? "text-slate-900" : "text-white"}`}>
           {name}
         </div>
         <div className={`truncate text-[11px] ${turn ? "text-slate-600" : "text-cyan-100/70"}`}>
-          {thinking ? "thinking…" : turn ? "your go!" : team.label}
+          {thinking ? "thinking…" : turn ? "your go!" : palette.name}
         </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Colour swatches, one row per player.
+ *
+ * Whatever the other player has taken is disabled rather than hidden: two
+ * children picking near-identical colours would make the board unreadable, and
+ * seeing the colour greyed out explains why far better than it quietly
+ * vanishing would.
+ */
+function ColourPicker({
+  label,
+  value,
+  taken,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  taken: string;
+  onChange: (id: string) => void;
+}) {
+  return (
+    <div>
+      <div className="mb-1 truncate text-[10px] font-bold uppercase tracking-wide text-cyan-100/70">
+        {label}
+      </div>
+      <div className="flex flex-wrap gap-1.5">
+        {PALETTES.map((palette) => {
+          const isTaken = palette.id === taken;
+          const isMine = palette.id === value;
+          return (
+            <button
+              key={palette.id}
+              type="button"
+              disabled={isTaken}
+              onClick={() => onChange(palette.id)}
+              aria-label={`${palette.name}${isTaken ? " — already taken" : ""}`}
+              title={isTaken ? `${palette.name} (taken)` : palette.name}
+              className={`size-8 rounded-full transition-transform active:scale-90 disabled:opacity-25 ${
+                isMine ? "ring-2 ring-white ring-offset-2 ring-offset-black/40" : ""
+              }`}
+              style={{
+                background: palette.body,
+                boxShadow: `inset 0 -5px 0 0 ${palette.accent}`,
+              }}
+            />
+          );
+        })}
       </div>
     </div>
   );

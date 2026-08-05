@@ -6,9 +6,11 @@ import { useRef } from "react";
 import * as THREE from "three";
 
 import type { Board, GameState, Move } from "../../chess/types";
-import { cameraFor, creatureScaleFor, squareToWorld } from "../utils/board-space";
+import type { Palette } from "../data/palettes";
+import type { SceneConfig } from "../data/scenes";
+import { cameraFor, creatureScaleFor, squareToWorld, type CameraAngle } from "../utils/board-space";
 import { Creature } from "./creature";
-import { Reef, WATER_DEEP } from "./reef";
+import { WorldScene } from "./world-scene";
 import { ReefBoard } from "./reef-board";
 import { SquareProjector } from "./square-overlay";
 
@@ -32,7 +34,7 @@ import { SquareProjector } from "./square-overlay";
  * the camera only moves when the board changes shape, easing into the new
  * framing and then stopping dead.
  */
-function Rig({ board }: { board: Board }) {
+function Rig({ board, angle }: { board: Board; angle: CameraAngle }) {
   const wanted = useRef(new THREE.Vector3());
   const target = useRef(new THREE.Vector3());
   const settled = useRef(false);
@@ -43,8 +45,7 @@ function Rig({ board }: { board: Board }) {
     // through a hook and then writing to it is exactly the pattern the React
     // compiler refuses — reasonably, since it cannot see the write.
     const camera = state.camera as THREE.PerspectiveCamera;
-    const portrait = state.size.height > state.size.width * 1.05;
-    const view = cameraFor(board, portrait);
+    const view = cameraFor(board, state.size.width, state.size.height, angle);
 
     // Re-frame whenever the board or the shape of the screen changes.
     if (
@@ -83,6 +84,10 @@ interface QuestSceneProps {
   checkSquare: number | null;
   /** The piece just eaten, so it can be shown spiralling away. */
   dying: { piece: NonNullable<Board["squares"][number]>; square: number; key: number } | null;
+  scene: SceneConfig;
+  /** One palette per side, chosen in Setup. */
+  palettes: Record<"white" | "black", Palette>;
+  angle: CameraAngle;
 }
 
 export function QuestScene({
@@ -92,6 +97,9 @@ export function QuestScene({
   inDanger,
   checkSquare,
   dying,
+  scene,
+  palettes,
+  angle,
 }: QuestSceneProps) {
   const board = state.board;
   const radius = Math.max(board.width, board.height) * 0.62 + 1.6;
@@ -116,13 +124,14 @@ export function QuestScene({
       dpr={modest ? 1 : [1, 2]}
       gl={{ antialias: !modest, powerPreference: "high-performance" }}
       camera={{ position: [0, 8, 10], fov: 44, near: 0.1, far: 90 }}
-      style={{ background: WATER_DEEP, touchAction: "manipulation" }}
+      style={{ background: scene.air, touchAction: "manipulation" }}
     >
-      <Rig board={board} />
-      <Reef radius={radius} />
+      <Rig board={board} angle={angle} />
+      <WorldScene radius={radius} scene={scene} />
 
       <ReefBoard
         board={board}
+        scene={scene}
         selected={selected}
         targets={targets}
         lastMove={state.lastMove}
@@ -136,6 +145,7 @@ export function QuestScene({
             key={piece.id}
             type={piece.type}
             team={piece.color}
+            palette={palettes[piece.color]}
             target={squareToWorld(board, square)}
             square={square}
             seed={piece.id * 1.7}
@@ -150,6 +160,7 @@ export function QuestScene({
           key={`dying-${dying.key}`}
           type={dying.piece.type}
           team={dying.piece.color}
+          palette={palettes[dying.piece.color]}
           target={squareToWorld(board, dying.square)}
           square={dying.square}
           seed={dying.piece.id * 1.7}

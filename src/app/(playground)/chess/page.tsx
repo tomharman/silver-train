@@ -15,7 +15,7 @@ import { STICKERS } from "./data/stickers";
 import { THEMES, getTheme } from "./data/themes";
 import { useStoredState } from "./hooks/use-stored-state";
 import type { Color, Difficulty, Mode } from "./types";
-import { sounds, unlockAudio } from "./utils/sound";
+import { listenForUnlock, sounds } from "./utils/sound";
 
 const NO_FLAGS: Record<string, boolean> = {};
 
@@ -45,13 +45,10 @@ export default function ChessPage() {
   const levelIndex = LEVELS.findIndex((candidate) => candidate.id === level.id);
   const nextLevel = LEVELS[levelIndex + 1];
 
-  // Mobile browsers only start audio from inside a real gesture, so the very
-  // first touch anywhere on the page is what wakes it up.
-  useEffect(() => {
-    const wake = () => unlockAudio();
-    window.addEventListener("pointerdown", wake, { capture: true });
-    return () => window.removeEventListener("pointerdown", wake, { capture: true });
-  }, []);
+  // Mobile browsers only start audio from inside a real gesture — and iOS is
+  // fussy about which ones count, and mutes Web Audio entirely unless the page
+  // claims the playback audio session. All of that lives in utils/sound.
+  useEffect(() => listenForUnlock(), []);
 
   const nameOf = useCallback(
     (color: Color) => {

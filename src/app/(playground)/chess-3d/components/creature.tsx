@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 import type { Color, PieceType } from "../../chess/types";
+import type { Palette } from "../data/palettes";
 import { CREATURES, TRAVEL_STYLE } from "../data/creatures";
 import { CreatureModel } from "./creature-models";
 
@@ -26,6 +27,7 @@ function easeOutCubic(t: number): number {
 interface CreatureProps {
   type: PieceType;
   team: Color;
+  palette: Palette;
   target: [number, number, number];
   /** Changing this is what starts a journey. */
   square: number;
@@ -41,6 +43,7 @@ interface CreatureProps {
 export function Creature({
   type,
   team,
+  palette,
   target,
   square,
   seed,
@@ -135,7 +138,7 @@ export function Creature({
         // White sits nearest the camera, so it turns to face the enemy.
         rotation={[0, team === "white" ? Math.PI : 0, 0]}
       >
-        <CreatureModel type={type} team={team} />
+        <CreatureModel type={type} palette={palette} />
       </group>
     </group>
   );

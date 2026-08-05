@@ -4,8 +4,8 @@ import type {} from "@react-three/fiber";
 import { useMemo } from "react";
 import * as THREE from "three";
 
-import type { Color, PieceType } from "../../chess/types";
-import { TEAMS } from "../data/creatures";
+import type { PieceType } from "../../chess/types";
+import type { Palette } from "../data/palettes";
 import { creatureGeometry, SLOTS, type Slot } from "../utils/creature-geometry";
 
 /**
@@ -17,24 +17,25 @@ import { creatureGeometry, SLOTS, type Slot } from "../utils/creature-geometry";
  * vertices and one set of materials.
  */
 
+// Keyed by palette rather than by side, so the same colour picked by either
+// player reuses one material.
 const materials = new Map<string, THREE.MeshStandardMaterial>();
 
-function materialFor(team: Color, slot: Slot): THREE.MeshStandardMaterial {
-  const key = `${team}:${slot}`;
+function materialFor(palette: Palette, slot: Slot): THREE.MeshStandardMaterial {
+  const key = `${palette.id}:${slot}`;
   const existing = materials.get(key);
   if (existing) return existing;
 
-  const colours = TEAMS[team];
   const colour =
     slot === "body"
-      ? colours.body
+      ? palette.body
       : slot === "belly"
-        ? colours.belly
+        ? palette.belly
         : slot === "accent"
-          ? colours.accent
+          ? palette.accent
           : slot === "white"
             ? "#FFFFFF"
-            : colours.eye;
+            : palette.eye;
 
   const material = new THREE.MeshStandardMaterial({
     color: colour,
@@ -46,13 +47,13 @@ function materialFor(team: Color, slot: Slot): THREE.MeshStandardMaterial {
   return material;
 }
 
-export function CreatureModel({ type, team }: { type: PieceType; team: Color }) {
+export function CreatureModel({ type, palette }: { type: PieceType; palette: Palette }) {
   const geometry = useMemo(() => creatureGeometry(type), [type]);
 
   return (
     <group>
       {SLOTS.map((slot) => (
-        <mesh key={slot} geometry={geometry[slot]} material={materialFor(team, slot)} />
+        <mesh key={slot} geometry={geometry[slot]} material={materialFor(palette, slot)} />
       ))}
     </group>
   );

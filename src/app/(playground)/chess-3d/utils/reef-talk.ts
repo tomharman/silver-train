@@ -19,7 +19,7 @@ function choose(options: string[], seed: number): string {
   return options[Math.abs(seed) % options.length];
 }
 
-export function welcome(level: Level, player: string): Line {
+export function welcome(level: Level, player: string, place: string): Line {
   const goal: Record<string, string> = {
     raceToEnd: "Get one of your crabs all the way to the far side!",
     captureAll: "Munch every last one of theirs to win!",
@@ -27,7 +27,7 @@ export function welcome(level: Level, player: string): Line {
     checkmate: "Trap their king so he can't get away. That's checkmate!",
   };
   return {
-    text: `Dive in, ${player}! ${goal[level.win]}`,
+    text: `Welcome to ${place}, ${player}! ${goal[level.win]}`,
     mood: "cheer",
   };
 }
