@@ -1,8 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-
 import { Pip } from "./pip";
+import { PixelButton } from "./pixel-ui";
 import { getSticker } from "../data/stickers";
 import type { Color, Outcome, PieceTheme } from "../types";
 
@@ -56,7 +55,7 @@ export function WinCelebration({
   hasNextLevel,
   onPlayAgain,
   onNextLevel,
-  onMap,
+  onDismiss,
 }: {
   outcome: Outcome;
   theme: PieceTheme;
@@ -67,7 +66,8 @@ export function WinCelebration({
   hasNextLevel: boolean;
   onPlayAgain: () => void;
   onNextLevel: () => void;
-  onMap: () => void;
+  /** Gets the panel out of the way so you can look at the finished board. */
+  onDismiss: () => void;
 }) {
   const isWin = outcome.kind === "win";
   const cheer = isWin && humanWon !== false;
@@ -75,8 +75,11 @@ export function WinCelebration({
   return (
     <>
       {cheer && <Confetti />}
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-        <div className="chess-rise w-full max-w-sm rounded-2xl bg-card p-5 text-center shadow-2xl">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+        <div
+          className="chess-rise w-full max-w-sm bg-neutral-100 p-5 text-center text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100"
+          style={{ boxShadow: "0 0 0 4px rgba(0,0,0,0.3)" }}
+        >
           <div className="mb-2 flex justify-center">
             <span className="chess-pip-cheer">
               <Pip
@@ -87,14 +90,14 @@ export function WinCelebration({
             </span>
           </div>
 
-          <h2 className="text-2xl font-bold leading-tight">
+          <h2 className="font-pixel text-base uppercase leading-relaxed tracking-[0.14em]">
             {isWin ? `${nameOf(outcome.winner)} wins!` : "It's a draw!"}
           </h2>
-          <p className="mt-1 text-sm text-muted-foreground">{outcome.reason}</p>
+          <p className="mt-1 text-sm opacity-60">{outcome.reason}</p>
 
           {earnedStickers.length > 0 && (
-            <div className="mt-4 rounded-xl border-2 border-dashed p-3">
-              <div className="mb-2 text-xs font-bold uppercase tracking-wide text-muted-foreground">
+            <div className="mt-4 border-4 border-dashed border-black/15 p-3">
+              <div className="font-pixel mb-2 text-[9px] uppercase tracking-[0.22em] opacity-50">
                 {earnedStickers.length === 1 ? "New sticker!" : "New stickers!"}
               </div>
               <div className="flex flex-wrap justify-center gap-3">
@@ -116,23 +119,18 @@ export function WinCelebration({
             </div>
           )}
 
-          <div className="mt-4 flex flex-col gap-2">
+          <div className="mt-5 flex flex-col gap-2">
             {hasNextLevel && (
-              <Button size="lg" className="w-full" onClick={onNextLevel}>
+              <PixelButton size="lg" tone="bright" className="w-full" onClick={onNextLevel}>
                 Next game →
-              </Button>
+              </PixelButton>
             )}
-            <Button
-              size="lg"
-              variant={hasNextLevel ? "outline" : "default"}
-              className="w-full"
-              onClick={onPlayAgain}
-            >
+            <PixelButton size="lg" className="w-full" onClick={onPlayAgain}>
               Play again
-            </Button>
-            <Button size="lg" variant="ghost" className="w-full" onClick={onMap}>
-              Back to the map
-            </Button>
+            </PixelButton>
+            <PixelButton size="lg" tone="quiet" className="w-full" onClick={onDismiss}>
+              Look at the board
+            </PixelButton>
           </div>
         </div>
       </div>

@@ -118,17 +118,28 @@ export type TravelStyle = "slide" | "hop" | "float" | "spin" | "roll" | "stomp";
 export type CaptureEffect = "poof" | "chomp" | "sparkle" | "yum" | "crumble";
 
 export interface PieceSkin {
-  /** Emoji. Ignored by the `art` style, which draws proper chess pieces. */
-  glyph: string;
-  /**
-   * Optional character artwork, e.g. `/chess/bluey/king.png`. When set this
-   * wins over `glyph`. This is the hook for show-themed piece sets.
-   */
-  imageSrc?: string;
-  /** What this piece is called in this theme — "Knight", "Sonic", "Bluey". */
+  /** What the game calls this piece out loud. */
   name: string;
-  /** Defaults to a hop for knights and a slide for everything else. */
+  /** Overrides how it carries itself. Defaults to the piece's own style. */
   travel?: TravelStyle;
+}
+
+/**
+ * A team's colours.
+ *
+ * `ramp` is blended across the cells of a piece rather than filling it flat, so
+ * a rook is a wash of four or five related colours the way the reference art
+ * is — the pixels look placed by hand rather than by a fill tool. The ramp is
+ * also what tells the two armies apart, so the two ramps in a world have to
+ * disagree about hue far more than about lightness: on a small screen, warm
+ * versus cool survives and light versus dark does not.
+ */
+export interface TeamPalette {
+  ramp: string[];
+  /** Drawn over the body for the slit, the nostril, the doorway. */
+  accent: string;
+  /** The little shadow the character stands on. */
+  shadow: string;
 }
 
 /**
@@ -137,6 +148,8 @@ export interface PieceSkin {
  * choosing one feel like going somewhere.
  */
 export interface World {
+  /** One palette per army. */
+  teams: Record<Color, TeamPalette>;
   /** Kid-facing name of the place — "The Jungle", "Deep Space". */
   name: string;
   lightSquare: string;
@@ -157,18 +170,6 @@ export interface PieceTheme {
   name: string;
   emoji: string;
   world: World;
-  /**
-   * `art` draws the built-in SVG chess pieces, coloured per side. `token` sits
-   * the emoji or artwork on a light or dark disc, which is how you tell the two
-   * sides apart when the character brings its own colours.
-   *
-   * Emoji are never drawn bare: iOS renders many of them — including the
-   * Unicode chess characters — with the colour emoji font, which ignores CSS
-   * `color` entirely and would leave both armies looking black.
-   */
-  style: "art" | "token";
-  whiteLabel: string;
-  blackLabel: string;
   /** What a capture looks like in this theme. Defaults to a puff of smoke. */
   captureEffect?: CaptureEffect;
   pieces: Record<PieceType, PieceSkin>;

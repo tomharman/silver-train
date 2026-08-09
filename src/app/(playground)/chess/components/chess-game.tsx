@@ -1,13 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { ChevronLeft, HelpCircle, RotateCcw, Undo2 } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
+import { useCallback, useEffect, useImperativeHandle, useMemo, useState } from "react";
+import { Settings2, Undo2 } from "lucide-react";
 
 import { WinCelebration } from "./celebration";
 import { ChessBoard, boardMaxWidth } from "./chess-board";
 import { PipSays } from "./pip";
+import { PixelButton } from "./pixel-ui";
 import { PlayerBar } from "./player-bar";
 import { pickMove } from "../engine/ai";
 import { findKing, opponent, promotionRank, rankOf } from "../engine/board";
@@ -26,6 +25,11 @@ import type {
 import * as say from "../utils/commentary";
 import { sounds } from "../utils/sound";
 
+/** The one thing the shell needs to reach into the game for. */
+export interface GameHandle {
+  restart: () => void;
+}
+
 interface ChessGameProps {
   /** Mount this component with `key={level.id}` — a new level is a new game. */
   level: Level;
@@ -40,11 +44,12 @@ interface ChessGameProps {
   stickers: Record<string, boolean>;
   hasNextLevel: boolean;
   onNextLevel: () => void;
-  onBackToMap: () => void;
-  onHowToPlay: () => void;
+  onOpenSettings: () => void;
   onEarnSticker: (id: string) => void;
   /** Called once, the moment a game finishes, with the side that won (if any). */
   onFinish: (winner: Color | null) => void;
+  /** So "start again" can live in the settings sheet with everything else. */
+  handleRef?: React.RefObject<GameHandle | null>;
 }
 
 export function ChessGame({
@@ -58,10 +63,10 @@ export function ChessGame({
   stickers,
   hasNextLevel,
   onNextLevel,
-  onBackToMap,
-  onHowToPlay,
+  onOpenSettings,
   onEarnSticker,
   onFinish,
+  handleRef,
 }: ChessGameProps) {
   const [state, setState] = useState<GameState>(() => createGame(level));
   const [past, setPast] = useState<GameState[]>([]);
@@ -257,6 +262,8 @@ export function ChessGame({
     speak(say.levelWelcome(level, theme, nameOf("white")));
   }, [level, theme, nameOf, speak]);
 
+  useImperativeHandle(handleRef, () => ({ restart }), [restart]);
+
   const undo = useCallback(() => {
     if (past.length === 0) return;
     // Against the computer, step back over its reply too, so it's your go again.
@@ -277,55 +284,10 @@ export function ChessGame({
         : state.outcome.winner === "white"
       : null;
 
+  const width = { maxWidth: boardMaxWidth(level) };
+
   return (
-    <div className="flex min-w-0 flex-1 flex-col items-center gap-3">
-      <div
-        className="flex w-full items-center justify-between gap-2"
-        style={{ maxWidth: boardMaxWidth(level) }}
-      >
-        <Button variant="ghost" size="sm" onClick={onBackToMap} className="-ml-2">
-          <ChevronLeft />
-          Map
-        </Button>
-        <span className="truncate text-sm font-bold">
-          {level.emoji} {level.name}
-        </span>
-        <Button variant="ghost" size="sm" onClick={onHowToPlay} aria-label="How to play">
-          <HelpCircle />
-        </Button>
-      </div>
-
-      <div className="w-full" style={{ maxWidth: boardMaxWidth(level) }}>
-        <PipSays
-          text={message.text}
-          mood={message.mood}
-          colour={theme.world.guide}
-          speechKey={messageKey}
-          compact
-        />
-      </div>
-
-      <div className="flex w-full gap-2" style={{ maxWidth: boardMaxWidth(level) }}>
-        <PlayerBar
-          color="white"
-          name={nameOf("white")}
-          theme={theme}
-          isTurn={state.turn === "white" && !state.outcome}
-          isThinking={false}
-          loot={state.captured.filter((piece) => piece.color === "black")}
-          align="left"
-        />
-        <PlayerBar
-          color="black"
-          name={nameOf("black")}
-          theme={theme}
-          isTurn={state.turn === "black" && !state.outcome}
-          isThinking={computerToPlay}
-          loot={state.captured.filter((piece) => piece.color === "white")}
-          align="right"
-        />
-      </div>
-
+    <div className="relative flex min-w-0 flex-1 flex-col items-center justify-center gap-2">
       <ChessBoard
         board={state.board}
         theme={theme}
@@ -338,18 +300,65 @@ export function ChessGame({
         round={round}
         inDanger={inDanger}
         checkSquare={checkSquare}
+        turn={state.turn}
+        winner={state.outcome?.kind === "win" ? state.outcome.winner : null}
+        thinking={computerToPlay}
         onSquare={handleSquare}
+        // The far player's name goes above their own end of the board and the
+        // near player's below theirs. It is the only arrangement a child reads
+        // without being told: your name is on your side.
+        railTop={
+          <PlayerBar
+            color="black"
+            name={nameOf("black")}
+            theme={theme}
+            isTurn={state.turn === "black" && !state.outcome}
+            isThinking={computerToPlay}
+            loot={state.captured.filter((piece) => piece.color === "white")}
+            align="left"
+          />
+        }
+        railBottom={
+          <PlayerBar
+            color="white"
+            name={nameOf("white")}
+            theme={theme}
+            isTurn={state.turn === "white" && !state.outcome}
+            isThinking={false}
+            loot={state.captured.filter((piece) => piece.color === "black")}
+            align="left"
+          />
+        }
       />
 
-      <div className="flex gap-2">
-        <Button variant="outline" size="lg" onClick={undo} disabled={past.length === 0}>
-          <Undo2 />
-          Oops!
-        </Button>
-        <Button variant="outline" size="lg" onClick={restart}>
-          <RotateCcw />
-          Start again
-        </Button>
+      <div className="mt-1 flex w-full items-center gap-2" style={width}>
+        <div className="min-w-0 flex-1">
+          <PipSays
+            text={message.text}
+            mood={message.mood}
+            colour={theme.world.guide}
+            speechKey={messageKey}
+            compact
+          />
+        </div>
+
+        {/*
+          Two buttons is the whole interface. Everything else a grown-up might
+          want is behind the gear — but not Oops, which a beginner presses more
+          than any other control in the game and which has to stay one tap away.
+        */}
+        <PixelButton
+          onClick={undo}
+          disabled={past.length === 0}
+          aria-label="Take that move back"
+          className="shrink-0"
+        >
+          <Undo2 className="size-3.5" />
+          Oops
+        </PixelButton>
+        <PixelButton onClick={onOpenSettings} aria-label="Settings" className="shrink-0">
+          <Settings2 className="size-3.5" />
+        </PixelButton>
       </div>
 
       {state.outcome && !dismissedWin && (
@@ -362,7 +371,7 @@ export function ChessGame({
           hasNextLevel={hasNextLevel}
           onPlayAgain={restart}
           onNextLevel={onNextLevel}
-          onMap={onBackToMap}
+          onDismiss={() => setDismissedWin(true)}
         />
       )}
     </div>

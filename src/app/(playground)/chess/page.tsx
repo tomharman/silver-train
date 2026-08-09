@@ -1,21 +1,30 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { Settings2, Volume2, VolumeX } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-import { Button } from "@/components/ui/button";
-
-import { ChessGame } from "./components/chess-game";
-import { JourneyMap } from "./components/journey-map";
+import { ChessGame, type GameHandle } from "./components/chess-game";
 import { HowToPanel } from "./components/panels";
 import { SettingsPanel } from "./components/settings-panel";
 import { StickerBook } from "./components/sticker-book";
 import { LEVELS, getLevel } from "./data/levels";
-import { STICKERS } from "./data/stickers";
 import { THEMES, getTheme } from "./data/themes";
 import { useStoredState } from "./hooks/use-stored-state";
 import type { Color, Difficulty, Mode } from "./types";
-import { listenForUnlock, sounds } from "./utils/sound";
+import { listenForUnlock } from "./utils/sound";
+
+/**
+ * Chess Club.
+ *
+ * The board is the screen. There used to be a map you came home to, a header, a
+ * row of setup controls and a bar for each player, and between them they took
+ * more of a phone than the game did. Now there is a board, one line from Pip,
+ * and two buttons — and everything that used to be on screen is behind the
+ * second of them.
+ *
+ * The trade is real and worth naming: choosing a level is two taps rather than
+ * looking at a map. But the map was for the grown-up, and the board is for the
+ * child, and only one of them is playing.
+ */
 
 const NO_FLAGS: Record<string, boolean> = {};
 
@@ -23,7 +32,7 @@ export default function ChessPage() {
   const [levelId, setLevelId] = useStoredState("chess-level", LEVELS[0].id);
   const [mode, setMode] = useStoredState<Mode>("chess-mode", "two");
   const [difficulty, setDifficulty] = useStoredState<Difficulty>("chess-difficulty", "sleepy");
-  const [themeId, setThemeId] = useStoredState("chess-theme", "classic");
+  const [themeId, setThemeId] = useStoredState("chess-theme", THEMES[0].id);
   const [soundOn, setSoundOn] = useStoredState("chess-sound", true);
   const [showDanger, setShowDanger] = useStoredState("chess-danger", false);
   const [playerOne, setPlayerOne] = useStoredState("chess-player-one", "Player 1");
@@ -34,11 +43,11 @@ export default function ChessPage() {
   // current value at the moment a world is entered.
   const [, setWorldsSeen] = useStoredState("chess-worlds-seen", NO_FLAGS);
 
-  // The map is home. You go into a game and come back out again.
-  const [screen, setScreen] = useState<"map" | "game">("map");
+  const [showSettings, setShowSettings] = useState(false);
   const [showHowTo, setShowHowTo] = useState(false);
-  const [showSetup, setShowSetup] = useState(false);
   const [showStickers, setShowStickers] = useState(false);
+
+  const game = useRef<GameHandle>(null);
 
   const level = getLevel(levelId);
   const theme = getTheme(themeId);
@@ -66,19 +75,15 @@ export default function ChessPage() {
     [setStickers],
   );
 
-  const startLevel = useCallback(
-    (id: string) => {
-      setLevelId(id);
-      setScreen("game");
-      // Visiting a world counts, whether or not the game goes well.
-      setWorldsSeen((current) => {
-        const next = current[themeId] ? current : { ...current, [themeId]: true };
-        if (THEMES.every((candidate) => next[candidate.id])) earnSticker("explorer");
-        return next;
-      });
-    },
-    [setLevelId, setWorldsSeen, themeId, earnSticker],
-  );
+  // Visiting a world counts, whether or not the game goes well.
+  useEffect(() => {
+    setWorldsSeen((current) => {
+      if (current[themeId]) return current;
+      const next = { ...current, [themeId]: true };
+      if (THEMES.every((candidate) => next[candidate.id])) earnSticker("explorer");
+      return next;
+    });
+  }, [themeId, setWorldsSeen, earnSticker]);
 
   const handleFinish = useCallback(
     (winner: Color | null) => {
@@ -96,100 +101,76 @@ export default function ChessPage() {
     [mode, level.id, setWon, earnSticker],
   );
 
-  const collected = STICKERS.filter((sticker) => stickers[sticker.id]).length;
-
   return (
-    <div className="flex min-w-0 flex-1 flex-col gap-3 p-3 sm:gap-4 sm:p-4 lg:p-6">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h1 className="text-xl font-bold leading-tight sm:text-2xl">Chess Club</h1>
-          <p className="hidden text-sm text-muted-foreground sm:block">
-            {collected > 0
-              ? `${collected} sticker${collected === 1 ? "" : "s"} collected so far.`
-              : "Six little games that add up to real chess."}
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="icon"
-            className="size-9"
-            aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
-            onClick={() => {
-              const next = !soundOn;
-              setSoundOn(next);
-              // Play something so you can hear that it worked.
-              if (next) sounds.sticker();
-            }}
-          >
-            {soundOn ? <Volume2 /> : <VolumeX />}
-          </Button>
-          <Button
-            variant={showSetup ? "default" : "outline"}
-            size="sm"
-            onClick={() => setShowSetup(!showSetup)}
-          >
-            <Settings2 />
-            Setup
-          </Button>
-        </div>
-      </div>
+    <div className="relative flex min-w-0 flex-1 flex-col p-2 sm:p-4">
+      {/* The sky the board stands under. Two layers rather than one, because
+          the light gradient a world is designed around would be a torch in the
+          face at night and the dark one is washed out by day. */}
+      <div
+        className="pointer-events-none absolute inset-0 dark:hidden"
+        style={{ background: theme.world.backdrop }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 hidden dark:block"
+        style={{ background: theme.world.backdropDark }}
+      />
 
-      {showSetup && (
+      <ChessGame
+        // A new level is a new game; changing the world mid-game is not.
+        key={level.id}
+        handleRef={game}
+        level={level}
+        theme={theme}
+        mode={mode}
+        difficulty={difficulty}
+        soundOn={soundOn}
+        showDanger={showDanger}
+        nameOf={nameOf}
+        stickers={stickers}
+        hasNextLevel={Boolean(nextLevel)}
+        onNextLevel={() => nextLevel && setLevelId(nextLevel.id)}
+        onOpenSettings={() => setShowSettings(true)}
+        onEarnSticker={earnSticker}
+        onFinish={handleFinish}
+      />
+
+      {showSettings && (
         <SettingsPanel
+          levelId={levelId}
+          onLevelChange={setLevelId}
+          won={won}
           mode={mode}
           onModeChange={setMode}
           difficulty={difficulty}
           onDifficultyChange={setDifficulty}
+          theme={theme}
           themeId={themeId}
           onThemeChange={setThemeId}
           playerOne={playerOne}
           playerTwo={playerTwo}
           onPlayerOneChange={setPlayerOne}
           onPlayerTwoChange={setPlayerTwo}
+          soundOn={soundOn}
+          onSoundChange={setSoundOn}
           showDanger={showDanger}
           onShowDangerChange={setShowDanger}
-        />
-      )}
-
-      {screen === "map" ? (
-        <JourneyMap
-          theme={theme}
-          won={won}
           stickers={stickers}
-          playerName={playerOne || "Player 1"}
-          onPickLevel={startLevel}
-          onPickTheme={setThemeId}
-          onOpenStickers={() => setShowStickers(true)}
-        />
-      ) : (
-        <ChessGame
-          // A new level is a new game; changing the world mid-game is not.
-          key={level.id}
-          level={level}
-          theme={theme}
-          mode={mode}
-          difficulty={difficulty}
-          soundOn={soundOn}
-          showDanger={showDanger}
-          nameOf={nameOf}
-          stickers={stickers}
-          hasNextLevel={Boolean(nextLevel)}
-          onNextLevel={() => nextLevel && startLevel(nextLevel.id)}
-          onBackToMap={() => setScreen("map")}
-          onHowToPlay={() => setShowHowTo(true)}
-          onEarnSticker={earnSticker}
-          onFinish={handleFinish}
+          onHowToPlay={() => {
+            setShowSettings(false);
+            setShowHowTo(true);
+          }}
+          onStickers={() => {
+            setShowSettings(false);
+            setShowStickers(true);
+          }}
+          onRestart={() => game.current?.restart()}
+          onClose={() => setShowSettings(false)}
         />
       )}
 
       {showHowTo && <HowToPanel level={level} theme={theme} onClose={() => setShowHowTo(false)} />}
       {showStickers && (
-        <StickerBook
-          stickers={stickers}
-          theme={theme}
-          onClose={() => setShowStickers(false)}
-        />
+        <StickerBook stickers={stickers} theme={theme} onClose={() => setShowStickers(false)} />
       )}
     </div>
   );

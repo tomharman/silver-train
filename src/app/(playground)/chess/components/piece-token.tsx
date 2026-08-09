@@ -1,6 +1,7 @@
 "use client";
 
-import { PieceArt } from "./piece-art";
+import { PixelPiece } from "./pixel-piece";
+import type { Face } from "../data/pixel-pieces";
 import type { Piece, PieceTheme } from "../types";
 
 interface PieceTokenProps {
@@ -8,51 +9,36 @@ interface PieceTokenProps {
   theme: PieceTheme;
   /** Square size in pixels — everything scales off this. */
   size: number;
+  face?: Face;
+  /** Which way the eyes are pointing, roughly -1 to 1 on each axis. */
+  gaze?: { x: number; y: number };
   className?: string;
 }
 
-export function PieceToken({ piece, theme, size, className = "" }: PieceTokenProps) {
-  const skin = theme.pieces[piece.type];
-  const isWhite = piece.color === "white";
+const STRAIGHT_AHEAD = { x: 0, y: 0 };
 
-  if (skin.imageSrc) {
-    return (
-      // eslint-disable-next-line @next/next/no-img-element -- themed art is dropped in by hand at unknown sizes
-      <img
-        src={skin.imageSrc}
-        alt={skin.name}
-        draggable={false}
-        className={`select-none object-contain ${className}`}
-        style={{ width: size * 0.86, height: size * 0.86 }}
-      />
-    );
-  }
+export function PieceToken({
+  piece,
+  theme,
+  size,
+  face = "calm",
+  gaze = STRAIGHT_AHEAD,
+  className = "",
+}: PieceTokenProps) {
+  const palette = theme.world.teams[piece.color];
 
-  if (theme.style === "art") {
-    return (
-      <span className={`flex items-center justify-center ${className}`}>
-        <PieceArt type={piece.type} light={isWhite} size={size * 0.84} />
-      </span>
-    );
-  }
-
-  // Emoji carry their own colours, so the two sides are told apart by the disc
-  // they sit on rather than by the character itself.
   return (
-    <span
-      className={`flex select-none items-center justify-center rounded-full ${className}`}
-      style={{
-        width: size * 0.78,
-        height: size * 0.78,
-        fontSize: size * 0.44,
-        lineHeight: 1,
-        background: isWhite ? "#FFFCF2" : "#2A2E3A",
-        boxShadow: isWhite
-          ? "0 2px 4px rgba(0,0,0,0.28), inset 0 0 0 2px rgba(0,0,0,0.12)"
-          : "0 2px 4px rgba(0,0,0,0.38), inset 0 0 0 2px rgba(255,255,255,0.22)",
-      }}
-    >
-      {skin.glyph}
+    <span className={`flex items-end justify-center pb-[2%] ${className}`}>
+      <PixelPiece
+        type={piece.type}
+        palette={palette}
+        face={face}
+        gaze={gaze}
+        seed={piece.id}
+        // A shade under the square, so a full board still reads as a grid of
+        // separate things rather than one continuous wall of characters.
+        size={size * 0.92}
+      />
     </span>
   );
 }

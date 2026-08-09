@@ -8,6 +8,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-pixel: var(--font-geist-pixel-square), var(--font-geist-mono), monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -502,6 +503,149 @@
   animation: chess-throb 1.4s ease-in-out infinite;
 }
 
+/* ---------------------------------------------------------------------------
+   The characters
+   Everything that makes thirty-two pixel creatures feel awake. All of it is
+   CSS on a clock rather than state in React: a board where every piece blinks
+   on its own timer would be thirty-two timers and thirty-two re-renders a
+   second, and it would look exactly the same.
+   --------------------------------------------------------------------------- */
+
+/* The idle bob. Each piece gets its own duration and a negative delay, so they
+   drift out of step within a second of the game starting and never line up
+   again. A board breathing in unison looks mechanical; out of step it looks
+   like a crowd. */
+@keyframes chess-idle {
+  /* Rises and settles, never dips. A bob that goes below the resting line
+     pushes the back rank off the bottom edge of the board, and there is no
+     margin to give it: the whole point is that the board fills the screen. */
+  0%,
+  100% {
+    transform: translateY(0) scaleY(0.99);
+  }
+  50% {
+    transform: translateY(-6%) scaleY(1.01);
+  }
+}
+
+.chess-idle {
+  animation-name: chess-idle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 100%;
+}
+
+/* The blink: two drawings on one clock, the open eye fading out exactly as the
+   closed lid fades in. Two blinks close together, because one on its own reads
+   as a glitch and a double reads as a creature. The fades are instant — a
+   gradual blink is a wink, and a wink means something. */
+@keyframes chess-eye-open {
+  0%,
+  87.4% {
+    opacity: 1;
+  }
+  87.5%,
+  89.4% {
+    opacity: 0;
+  }
+  89.5%,
+  91.4% {
+    opacity: 1;
+  }
+  91.5%,
+  93.4% {
+    opacity: 0;
+  }
+  93.5%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes chess-eye-shut {
+  0%,
+  87.4% {
+    opacity: 0;
+  }
+  87.5%,
+  89.4% {
+    opacity: 1;
+  }
+  89.5%,
+  91.4% {
+    opacity: 0;
+  }
+  91.5%,
+  93.4% {
+    opacity: 1;
+  }
+  93.5%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.chess-eye-open {
+  animation-name: chess-eye-open;
+  animation-timing-function: steps(1, end);
+  animation-iteration-count: infinite;
+}
+
+.chess-eye-shut {
+  animation-name: chess-eye-shut;
+  animation-timing-function: steps(1, end);
+  animation-iteration-count: infinite;
+}
+
+/* The piece you have hold of: lifted, bigger, and impossible to lose track of. */
+@keyframes chess-held {
+  0%,
+  100% {
+    transform: translateY(-9%) scale(1.16);
+  }
+  50% {
+    transform: translateY(-14%) scale(1.2);
+  }
+}
+
+.chess-held {
+  animation: chess-held 900ms ease-in-out infinite;
+  transform-origin: 50% 100%;
+}
+
+/* A square you may move to, pulsing under the piece rather than over it. */
+@keyframes chess-tile-hint {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.86);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.chess-tile-hint {
+  animation: chess-tile-hint 1.25s ease-in-out infinite;
+}
+
+/* Whose go it is, ticking along the rail. */
+@keyframes chess-rail-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0.25;
+  }
+}
+
+.chess-rail-blink {
+  animation: chess-rail-blink 1s steps(1, end) infinite;
+}
+
 /* Everything above is decoration. Turn all of it off for anyone who has asked
    for less movement — the game plays identically without it. */
 @media (prefers-reduced-motion: reduce) {
@@ -516,9 +660,33 @@
   .chess-confetti,
   .chess-sticker-in,
   .chess-rise,
+  .chess-idle,
+  .chess-held,
+  .chess-tile-hint,
+  .chess-rail-blink,
   [class*="chess-travel-"],
   [class*="chess-victim-"] {
     animation: none !important;
+  }
+
+  /* The blink is the one animation that must keep its END state rather than be
+     switched off: with no animation at all, the open eye and the shut lid would
+     both be painted and every piece would look glued shut. */
+  .chess-eye-open {
+    animation: none !important;
+    opacity: 1;
+  }
+  .chess-eye-shut {
+    animation: none !important;
+    opacity: 0;
+  }
+
+  /* Hints still have to be findable when they aren't allowed to pulse. */
+  .chess-tile-hint {
+    opacity: 1;
+  }
+  .chess-rail-blink {
+    opacity: 1;
   }
 
   /* Confetti falls from off-screen, so with no animation it must not sit there. */

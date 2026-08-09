@@ -162,36 +162,49 @@ export function PipSays({
   compact?: boolean;
   tone?: "light" | "dark";
 }) {
-  const fill = tone === "dark" ? "rgba(12,17,22,0.88)" : "var(--card)";
-  const ink = tone === "dark" ? "#F4FAFF" : "var(--card-foreground)";
+  const fill = tone === "dark" ? "#12171C" : "#FFFDF5";
+  const ink = tone === "dark" ? "#F4FAFF" : "#1B1D26";
 
   return (
-    <div className="flex w-full items-center gap-2">
+    <div className="flex w-full items-center gap-1.5">
       <span className="chess-pip-bob shrink-0">
-        <Pip mood={mood} colour={colour} size={compact ? 44 : 54} />
+        <Pip mood={mood} colour={colour} size={compact ? 40 : 54} />
       </span>
+      {/*
+        A dialogue box, not a speech bubble: square corners, a hard border and
+        a hard shadow, in the pixel face the rest of the game is set in. It is
+        the oldest signal in video games for "somebody is talking to you", and a
+        five year old who has never played one still reads it instantly.
+      */}
       <div
         key={speechKey}
-        className="chess-speech relative min-w-0 flex-1 rounded-2xl border-2 px-3 py-2"
-        style={{ borderColor: colour, background: fill, color: ink }}
+        className="chess-speech relative min-w-0 flex-1 px-2.5 py-2"
+        style={{
+          background: fill,
+          color: ink,
+          boxShadow: `0 0 0 3px ${colour}, 0 3px 0 3px rgba(0,0,0,0.22)`,
+        }}
       >
-        {/*
-          The tail is a rotated square showing only its two outer borders. On
-          its own that leaves the bubble's own left border running straight
-          through the join, which read as a separate floating chevron — so a
-          sliver of the bubble's fill is painted over that seam afterwards.
-        */}
+        {/* A stepped tail, drawn as two blocks. A diagonal one would be the
+            only sloping edge anywhere in the game. */}
         <span
           aria-hidden="true"
-          className="absolute -left-[9px] top-1/2 size-3 -translate-y-1/2 rotate-45 border-b-2 border-l-2"
-          style={{ borderColor: colour, background: fill }}
+          className="absolute -left-[9px] top-1/2 block h-[7px] w-[7px] -translate-y-[9px]"
+          style={{ background: colour }}
         />
         <span
           aria-hidden="true"
-          className="absolute -left-[3px] top-1/2 h-3 w-[4px] -translate-y-1/2"
+          className="absolute -left-[9px] top-1/2 block h-[7px] w-[10px] -translate-y-[2px]"
+          style={{ background: colour }}
+        />
+        <span
+          aria-hidden="true"
+          className="absolute -left-[3px] top-1/2 block h-[14px] w-[5px] -translate-y-[7px]"
           style={{ background: fill }}
         />
-        <p className="relative text-sm font-medium leading-snug">{text}</p>
+        <p className="font-pixel relative text-[11px] leading-[1.7] tracking-[0.02em] sm:text-xs">
+          {text}
+        </p>
       </div>
     </div>
   );

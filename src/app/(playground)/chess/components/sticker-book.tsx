@@ -1,7 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-
+import { PixelSheet } from "./pixel-ui";
 import { STICKERS } from "../data/stickers";
 import type { PieceTheme } from "../types";
 
@@ -17,58 +16,44 @@ export function StickerBook({
   const earned = STICKERS.filter((sticker) => stickers[sticker.id]).length;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
-      onClick={onClose}
-    >
-      <div
-        className="max-h-[85vh] w-full max-w-md overflow-y-auto rounded-2xl bg-card p-5 shadow-2xl"
-        onClick={(event) => event.stopPropagation()}
-      >
-        <div className="mb-1 flex items-baseline justify-between">
-          <h2 className="text-lg font-bold">Sticker Book</h2>
-          <span className="text-sm font-semibold text-muted-foreground">
-            {earned} of {STICKERS.length}
-          </span>
-        </div>
-        <p className="mb-4 text-sm text-muted-foreground">
-          Every sticker is something you actually did on the board.
-        </p>
+    <PixelSheet title={`Stickers ${earned}/${STICKERS.length}`} onClose={onClose}>
+      <p className="font-pixel mb-4 text-[10px] leading-relaxed opacity-55">
+        Every sticker is something you actually did on the board.
+      </p>
 
-        <div className="mb-5 grid grid-cols-3 gap-2.5">
-          {STICKERS.map((sticker) => {
-            const has = Boolean(stickers[sticker.id]);
-            return (
-              <div
-                key={sticker.id}
-                className={`flex flex-col items-center gap-1 rounded-xl border-2 p-2 text-center ${
-                  has ? "bg-card" : "border-dashed bg-muted"
-                }`}
-                style={has ? { borderColor: theme.world.guide } : undefined}
+      <div className="grid grid-cols-3 gap-2">
+        {STICKERS.map((sticker) => {
+          const has = Boolean(stickers[sticker.id]);
+          return (
+            <div
+              key={sticker.id}
+              className="flex flex-col items-center gap-1 p-2 text-center"
+              style={{
+                background: has ? "#FFFDF5" : "rgba(0,0,0,0.06)",
+                boxShadow: has
+                  ? `0 0 0 3px ${theme.world.guide}`
+                  : "0 0 0 3px rgba(0,0,0,0.12)",
+              }}
+            >
+              <span
+                className={`text-3xl leading-none ${has ? "" : "opacity-25 grayscale"}`}
+                aria-hidden="true"
               >
-                <span
-                  className={`text-3xl leading-none ${has ? "" : "opacity-25 grayscale"}`}
-                  aria-hidden="true"
-                >
-                  {has ? sticker.emoji : "❓"}
-                </span>
-                <span className="text-[11px] font-bold leading-tight">
-                  {has ? sticker.name : "???"}
-                </span>
-                {has && (
-                  <span className="text-[10px] leading-tight text-muted-foreground">
-                    {sticker.how}
-                  </span>
-                )}
-              </div>
-            );
-          })}
-        </div>
-
-        <Button className="w-full" size="lg" onClick={onClose}>
-          Back to the map
-        </Button>
+                {has ? sticker.emoji : "❓"}
+              </span>
+              <span
+                className="font-pixel text-[8px] uppercase leading-relaxed tracking-widest"
+                style={{ color: has ? "#1B1D26" : undefined, opacity: has ? 1 : 0.45 }}
+              >
+                {has ? sticker.name : "???"}
+              </span>
+              {has && (
+                <span className="text-[10px] leading-tight text-neutral-500">{sticker.how}</span>
+              )}
+            </div>
+          );
+        })}
       </div>
-    </div>
+    </PixelSheet>
   );
 }

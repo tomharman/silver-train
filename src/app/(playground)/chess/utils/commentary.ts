@@ -66,10 +66,10 @@ export function pickedUp(theme: PieceTheme, type: PieceType, seen: boolean, seed
   }
   return line(
     [
-      "Tap a glowing dot to go there!",
+      "Tap a yellow block to go there!",
       "Where shall we go?",
       "Pick a spot!",
-      "The dots show every place it can go.",
+      "The yellow blocks show everywhere it can go.",
     ],
     "happy",
     seed,

@@ -3,11 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 
 import { PieceToken } from "./piece-token";
-import type { Board, Move, PieceTheme } from "../types";
+import type { Board, Color, Move, PieceTheme } from "../types";
+import { type Attention, faceFor, gazeFor } from "../utils/expressions";
 import {
   burstFor,
   burstVector,
   captureEffectFor,
+  idleRhythm,
   travelDuration,
   travelEasing,
   travelStyleFor,
@@ -31,7 +33,18 @@ interface ChessBoardProps {
   /** Your pieces the other side could take on their next go. */
   inDanger: Set<number>;
   checkSquare: number | null;
+  turn: Color;
+  /** Set once someone has won, so their whole army can celebrate. */
+  winner: Color | null;
+  thinking: boolean;
   onSquare: (square: number) => void;
+  /**
+   * Whose end is whose, painted on the frame above and below the grid rather
+   * than floating over the page. Names on the frame read as part of the board;
+   * names on the background read as an interface.
+   */
+  railTop: React.ReactNode;
+  railBottom: React.ReactNode;
 }
 
 export function ChessBoard({
@@ -46,7 +59,12 @@ export function ChessBoard({
   round,
   inDanger,
   checkSquare,
+  turn,
+  winner,
+  thinking,
   onSquare,
+  railTop,
+  railBottom,
 }: ChessBoardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [squareSize, setSquareSize] = useState(0);
@@ -76,14 +94,34 @@ export function ChessBoard({
   const captureEffect = captureEffectFor(theme);
   const burst = burstFor(captureEffect);
 
+  // What the whole board is looking at. Something in your hand beats something
+  // that has already happened.
+  const attention: Attention = {
+    focus: selected ?? lastMove?.to ?? null,
+    lastMove: showEffects ? lastMove : null,
+    inDanger,
+    checkSquare,
+    winner,
+    thinking,
+    turn,
+  };
+
   return (
     <div
-      className="w-full touch-manipulation select-none rounded-2xl p-2 shadow-lg sm:p-3"
-      style={{ background: theme.world.frame, maxWidth: boardMaxWidth(board) }}
+      className="w-full touch-manipulation select-none p-1.5 sm:p-2"
+      style={{
+        background: theme.world.frame,
+        maxWidth: boardMaxWidth(board),
+        // Square corners. Everything else here is on a pixel grid, and a
+        // rounded rectangle is the one shape a pixel grid cannot make.
+        boxShadow: "0 0 0 4px rgba(0,0,0,0.16), 0 10px 0 -2px rgba(0,0,0,0.14)",
+      }}
     >
+      <div className="px-0.5 pb-1 pt-0.5">{railTop}</div>
+
       <div
         ref={ref}
-        className="relative w-full overflow-hidden rounded-lg"
+        className="relative w-full overflow-hidden"
         style={{ aspectRatio: `${board.width} / ${board.height}` }}
       >
         {/* Squares: the board itself, plus every highlight and hint. */}
@@ -118,17 +156,17 @@ export function ChessBoard({
                   }}
                 >
                   {inLastMove && (
-                    <span className="pointer-events-none absolute inset-0 bg-amber-300/35" />
+                    <span className="pointer-events-none absolute inset-0 bg-amber-300/30" />
                   )}
 
                   {isSelected && (
-                    <span className="pointer-events-none absolute inset-0 bg-amber-300/60 ring-4 ring-inset ring-amber-400" />
+                    <span className="pointer-events-none absolute inset-0 bg-amber-300/55 ring-[3px] ring-inset ring-amber-400" />
                   )}
 
                   {inDanger.has(square) && (
                     <span
-                      className="pointer-events-none absolute inset-[7%] rounded-lg"
-                      style={{ boxShadow: "inset 0 0 0 3px rgba(220,38,38,0.75)" }}
+                      className="pointer-events-none absolute inset-[8%]"
+                      style={{ boxShadow: "inset 0 0 0 3px rgba(220,38,38,0.8)" }}
                     />
                   )}
 
@@ -142,25 +180,30 @@ export function ChessBoard({
                     />
                   )}
 
-                  {/* Move hints: a fat dot on an empty square, a ring on something to take. */}
-                  {/* Dark core, light halo: the one combination that stays
-                      visible on both square colours in every world. */}
+                  {/* Where you may go: a fat block, not a dot, because
+                      everything else in this game is made of blocks. Bright
+                      core inside a dark edge is the one combination that
+                      survives on both square colours in every world — and it
+                      has to be BRIGHT, because it is the only thing on screen
+                      a beginner is being asked to look for. */}
                   {target && !occupied && (
                     <span
-                      className="chess-throb pointer-events-none absolute rounded-full"
+                      className="chess-tile-hint pointer-events-none absolute"
                       style={{
-                        width: "32%",
-                        height: "32%",
-                        background: "rgba(20,22,30,0.45)",
-                        boxShadow: "0 0 0 3px rgba(255,255,255,0.55)",
+                        width: "34%",
+                        height: "34%",
+                        background: "#FFE066",
+                        boxShadow: "0 0 0 4px rgba(24,26,36,0.75)",
                       }}
                     />
                   )}
 
+                  {/* Something to take: a frame round the whole square, so it
+                      reads over the character standing in it. */}
                   {target && occupied && (
                     <span
-                      className="chess-throb pointer-events-none absolute inset-[6%] rounded-full"
-                      style={{ boxShadow: "inset 0 0 0 6px rgba(220,38,38,0.85)" }}
+                      className="chess-tile-hint pointer-events-none absolute inset-[4%]"
+                      style={{ boxShadow: "inset 0 0 0 5px rgba(220,38,38,0.9)" }}
                     />
                   )}
                 </button>
@@ -192,6 +235,8 @@ export function ChessBoard({
               const { x, y } = position(square);
               const style = travelStyleFor(theme, piece.type);
               const justMoved = showEffects && lastMove?.to === square;
+              const idle = idleRhythm(piece.id);
+              const held = selected === square;
 
               return (
                 <div
@@ -206,14 +251,14 @@ export function ChessBoard({
                     transitionProperty: "transform",
                     transitionDuration: `${travelDuration(style)}ms`,
                     transitionTimingFunction: travelEasing(style),
-                    zIndex: justMoved ? 2 : 1,
+                    zIndex: held ? 3 : justMoved ? 2 : 1,
                   }}
                 >
                   <div
                     // Re-keyed on each move so the flourish replays; pieces that
                     // stayed put keep the same key and stay still.
                     key={justMoved ? `travel-${ply}` : "resting"}
-                    className={`flex h-full w-full items-center justify-center ${
+                    className={`flex h-full w-full items-end justify-center ${
                       justMoved ? `chess-travel-${style}` : ply === 0 ? "chess-arrive" : ""
                     }`}
                     style={
@@ -225,7 +270,21 @@ export function ChessBoard({
                           : undefined
                     }
                   >
-                    <PieceToken piece={piece} theme={theme} size={squareSize} />
+                    {/* The bob lives on its own element because the layers above
+                        it are already using transform for the journey and the
+                        flourish, and one element can only have one. */}
+                    <div
+                      className={`flex h-full w-full items-end justify-center ${held ? "chess-held" : "chess-idle"}`}
+                      style={held ? undefined : { animationDuration: idle.duration, animationDelay: idle.delay }}
+                    >
+                      <PieceToken
+                        piece={piece}
+                        theme={theme}
+                        size={squareSize}
+                        face={faceFor(board, square, piece.color, attention)}
+                        gaze={gazeFor(board, square, attention)}
+                      />
+                    </div>
                   </div>
                 </div>
               );
@@ -233,6 +292,8 @@ export function ChessBoard({
           </div>
         )}
       </div>
+
+      <div className="px-0.5 pb-0.5 pt-1">{railBottom}</div>
     </div>
   );
 }
@@ -264,14 +325,15 @@ function CaptureFlourish({
         width: size,
         height: size,
         transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
-        zIndex: 3,
+        zIndex: 4,
       }}
     >
       <div
-        className={`chess-victim-${effect} flex h-full w-full items-center justify-center`}
+        className={`chess-victim-${effect} flex h-full w-full items-end justify-center`}
         style={{ animationDelay: `${delay}ms` }}
       >
-        <PieceToken piece={move.capture.piece} theme={theme} size={size} />
+        {/* Going out with a shocked face is worth the two lines it costs. */}
+        <PieceToken piece={move.capture.piece} theme={theme} size={size} face="scared" />
       </div>
 
       {burst.map((emoji, index) => {
@@ -300,10 +362,10 @@ function CaptureFlourish({
 
 /**
  * Widest the board may get. Capped by the viewport's height as well as its
- * width, so the whole game — board, whose-turn bar and the Oops! button — lands
- * on one screen without scrolling. The height cap is what does the work on a
- * short phone; on anything roomier the width or the 34rem ceiling wins first.
+ * width, so the whole game lands on one screen without scrolling. The height
+ * cap is what does the work on a short phone; on anything roomier the width or
+ * the 34rem ceiling wins first.
  */
 export function boardMaxWidth(board: { width: number; height: number }): string {
-  return `min(96vw, 34rem, calc(44vh * ${board.width} / ${board.height}))`;
+  return `min(94vw, 34rem, calc(63vh * ${board.width} / ${board.height}))`;
 }
