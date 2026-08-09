@@ -102,7 +102,11 @@ export default function ChessPage() {
   );
 
   return (
-    <div className="relative flex min-w-0 flex-1 flex-col p-2 sm:p-4">
+    // The pixel face is set once, here, and everything inside inherits it —
+    // including the sheets, which are fixed-position but still children. A
+    // game drawn on a grid of squares should not have a single word of
+    // anti-aliased text anywhere in it.
+    <div className="font-pixel relative flex min-w-0 flex-1 flex-col p-2 sm:p-4">
       {/* The sky the board stands under. Two layers rather than one, because
           the light gradient a world is designed around would be a torch in the
           face at night and the dark one is washed out by day. */}

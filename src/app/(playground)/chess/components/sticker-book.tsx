@@ -48,7 +48,7 @@ export function StickerBook({
                 {has ? sticker.name : "???"}
               </span>
               {has && (
-                <span className="text-[10px] leading-tight text-neutral-500">{sticker.how}</span>
+                <span className="text-[8px] leading-[1.7] text-neutral-500">{sticker.how}</span>
               )}
             </div>
           );

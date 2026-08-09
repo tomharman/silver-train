@@ -48,7 +48,7 @@ export function HowToPanel({
     <PixelSheet title={level.name} onClose={onClose}>
       <ul className="mb-5 space-y-2">
         {level.howTo.map((line) => (
-          <li key={line} className="flex gap-2 text-[15px] leading-snug">
+          <li key={line} className="flex gap-2 text-xs leading-[1.85]">
             <span style={{ color: theme.world.guide }}>◆</span>
             <span>{line}</span>
           </li>
@@ -77,7 +77,7 @@ export function HowToPanel({
               <div className="font-pixel text-[10px] uppercase tracking-[0.18em] text-neutral-900">
                 {theme.pieces[type].name}
               </div>
-              <div className="text-xs leading-snug text-neutral-700">{MOVEMENT[type]}</div>
+              <div className="text-[10px] leading-[1.8] text-neutral-700">{MOVEMENT[type]}</div>
             </div>
           </div>
         ))}
@@ -87,7 +87,7 @@ export function HowToPanel({
         <div className="font-pixel mb-1 text-[9px] uppercase tracking-[0.22em] opacity-50">
           For the grown-up
         </div>
-        <p className="text-xs leading-relaxed opacity-70">{level.grownUpNote}</p>
+        <p className="text-[10px] leading-[1.9] opacity-70">{level.grownUpNote}</p>
       </div>
 
       <PixelButton tone="bright" size="lg" className="w-full" onClick={onClose}>

@@ -93,7 +93,7 @@ export function WinCelebration({
           <h2 className="font-pixel text-base uppercase leading-relaxed tracking-[0.14em]">
             {isWin ? `${nameOf(outcome.winner)} wins!` : "It's a draw!"}
           </h2>
-          <p className="mt-1 text-sm opacity-60">{outcome.reason}</p>
+          <p className="mt-2 text-[10px] leading-[1.8] opacity-60">{outcome.reason}</p>
 
           {earnedStickers.length > 0 && (
             <div className="mt-4 border-4 border-dashed border-black/15 p-3">
@@ -111,7 +111,7 @@ export function WinCelebration({
                       style={{ animationDelay: `${0.15 + index * 0.22}s` }}
                     >
                       <span className="text-4xl leading-none">{sticker.emoji}</span>
-                      <span className="text-[11px] font-bold leading-tight">{sticker.name}</span>
+                      <span className="text-[8px] uppercase leading-[1.6] tracking-widest">{sticker.name}</span>
                     </div>
                   );
                 })}
