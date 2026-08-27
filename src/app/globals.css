@@ -8,6 +8,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-pixel: var(--font-geist-pixel-square), var(--font-geist-mono), monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -118,5 +119,616 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Chess Club
+   The piece's journey across the board is a CSS transition on the wrapper's
+   transform. These keyframes are the flourish layered on top of that: how the
+   piece carries itself while it travels, and what happens to whatever it lands
+   on. Each theme picks a set in data/themes.ts.
+   --------------------------------------------------------------------------- */
+
+@keyframes chess-pop {
+  0% {
+    transform: scale(0.72);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes chess-throb {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+/* --- how a piece travels --- */
+
+@keyframes chess-travel-hop {
+  0% {
+    transform: translateY(0) scale(1, 1);
+  }
+  15% {
+    transform: translateY(6%) scale(1.12, 0.88);
+  }
+  50% {
+    transform: translateY(-42%) scale(0.94, 1.1);
+  }
+  85% {
+    transform: translateY(4%) scale(1.14, 0.86);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+@keyframes chess-travel-float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  35% {
+    transform: translateY(-18%) rotate(-7deg);
+  }
+  70% {
+    transform: translateY(-10%) rotate(6deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes chess-travel-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.14);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes chess-travel-roll {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes chess-travel-stomp {
+  0% {
+    transform: translateY(0) scale(1, 1);
+  }
+  55% {
+    transform: translateY(-14%) scale(0.94, 1.08);
+  }
+  78% {
+    transform: translateY(0) scale(1.22, 0.78);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+.chess-travel-slide {
+  /* Nothing extra — the transition does all of it. */
+}
+.chess-travel-hop {
+  animation: chess-travel-hop 420ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.chess-travel-float {
+  animation: chess-travel-float 480ms ease-in-out;
+}
+.chess-travel-spin {
+  animation: chess-travel-spin 380ms ease-in-out;
+}
+.chess-travel-roll {
+  animation: chess-travel-roll 420ms linear;
+}
+.chess-travel-stomp {
+  animation: chess-travel-stomp 320ms ease-out;
+}
+
+/* --- what happens to the piece that was taken --- */
+
+@keyframes chess-victim-poof {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  45% {
+    transform: scale(1.25) rotate(6deg);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(0.4) rotate(-12deg);
+    opacity: 0;
+  }
+}
+
+@keyframes chess-victim-chomp {
+  0% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(1.3, 0.6);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(0.5, 1.25) rotate(14deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.2, 0.2) rotate(28deg);
+    opacity: 0;
+  }
+}
+
+@keyframes chess-victim-sparkle {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.15) rotate(420deg);
+    opacity: 0;
+  }
+}
+
+@keyframes chess-victim-yum {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  35% {
+    transform: scale(1.18);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.55) translateY(10%);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(0) translateY(20%);
+    opacity: 0;
+  }
+}
+
+@keyframes chess-victim-crumble {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  30% {
+    transform: translateY(-14%) rotate(-10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(55%) rotate(48deg) scale(0.6);
+    opacity: 0;
+  }
+}
+
+.chess-victim-poof {
+  animation: chess-victim-poof 460ms ease-out both;
+}
+.chess-victim-chomp {
+  animation: chess-victim-chomp 460ms ease-out both;
+}
+.chess-victim-sparkle {
+  animation: chess-victim-sparkle 500ms ease-in both;
+}
+.chess-victim-yum {
+  animation: chess-victim-yum 480ms ease-in both;
+}
+.chess-victim-crumble {
+  animation: chess-victim-crumble 520ms ease-in both;
+}
+
+/* --- the little emoji thrown out of a capture --- */
+
+@keyframes chess-burst {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(
+        calc(-50% + var(--chess-dx, 0px)),
+        calc(-50% + var(--chess-dy, 0px))
+      )
+      scale(1.1);
+    opacity: 0;
+  }
+}
+
+.chess-burst {
+  animation: chess-burst 620ms ease-out both;
+}
+
+/* --- Pip, the map, and the celebration --- */
+
+@keyframes chess-pip-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-8%) rotate(2deg);
+  }
+}
+
+@keyframes chess-pip-cheer {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-12%) scale(1.06) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-6%) scale(1.03) rotate(5deg);
+  }
+}
+
+@keyframes chess-speech {
+  0% {
+    transform: scale(0.92) translateX(-6px);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.02) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* The stop he's up to, quietly asking to be tapped. */
+@keyframes chess-beacon {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(240, 168, 30, 0.7);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(240, 168, 30, 0);
+    transform: scale(1.06);
+  }
+}
+
+@keyframes chess-drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+@keyframes chess-confetti {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) translateX(var(--chess-drift, 0px)) rotate(540deg);
+    opacity: 0;
+  }
+}
+
+@keyframes chess-sticker-in {
+  0% {
+    transform: scale(0) rotate(-30deg);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.2) rotate(8deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes chess-rise {
+  0% {
+    transform: translateY(16px) scale(0.96);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.chess-pip-bob {
+  animation: chess-pip-bob 3.4s ease-in-out infinite;
+}
+.chess-pip-cheer {
+  animation: chess-pip-cheer 900ms ease-in-out infinite;
+}
+.chess-speech {
+  animation: chess-speech 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.chess-beacon {
+  animation: chess-beacon 2s ease-in-out infinite;
+}
+.chess-drift {
+  animation: chess-drift 6s ease-in-out infinite;
+}
+.chess-confetti {
+  animation-name: chess-confetti;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+.chess-sticker-in {
+  animation: chess-sticker-in 520ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.chess-rise {
+  animation: chess-rise 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.chess-pop {
+  animation: chess-pop 180ms ease-out;
+}
+
+.chess-throb {
+  animation: chess-throb 1.4s ease-in-out infinite;
+}
+
+/* ---------------------------------------------------------------------------
+   The characters
+   Everything that makes thirty-two pixel creatures feel awake. All of it is
+   CSS on a clock rather than state in React: a board where every piece blinks
+   on its own timer would be thirty-two timers and thirty-two re-renders a
+   second, and it would look exactly the same.
+   --------------------------------------------------------------------------- */
+
+/* The idle bob. Each piece gets its own duration and a negative delay, so they
+   drift out of step within a second of the game starting and never line up
+   again. A board breathing in unison looks mechanical; out of step it looks
+   like a crowd. */
+@keyframes chess-idle {
+  /* Rises and settles, never dips. A bob that goes below the resting line
+     pushes the back rank off the bottom edge of the board, and there is no
+     margin to give it: the whole point is that the board fills the screen. */
+  0%,
+  100% {
+    transform: translateY(0) scaleY(0.99);
+  }
+  50% {
+    transform: translateY(-6%) scaleY(1.01);
+  }
+}
+
+.chess-idle {
+  animation-name: chess-idle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 100%;
+}
+
+/* The blink: two drawings on one clock, the open eye fading out exactly as the
+   closed lid fades in. Two blinks close together, because one on its own reads
+   as a glitch and a double reads as a creature. The fades are instant — a
+   gradual blink is a wink, and a wink means something. */
+@keyframes chess-eye-open {
+  0%,
+  87.4% {
+    opacity: 1;
+  }
+  87.5%,
+  89.4% {
+    opacity: 0;
+  }
+  89.5%,
+  91.4% {
+    opacity: 1;
+  }
+  91.5%,
+  93.4% {
+    opacity: 0;
+  }
+  93.5%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes chess-eye-shut {
+  0%,
+  87.4% {
+    opacity: 0;
+  }
+  87.5%,
+  89.4% {
+    opacity: 1;
+  }
+  89.5%,
+  91.4% {
+    opacity: 0;
+  }
+  91.5%,
+  93.4% {
+    opacity: 1;
+  }
+  93.5%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.chess-eye-open {
+  animation-name: chess-eye-open;
+  animation-timing-function: steps(1, end);
+  animation-iteration-count: infinite;
+}
+
+.chess-eye-shut {
+  animation-name: chess-eye-shut;
+  animation-timing-function: steps(1, end);
+  animation-iteration-count: infinite;
+}
+
+/* The piece you have hold of: lifted, bigger, and impossible to lose track of. */
+@keyframes chess-held {
+  0%,
+  100% {
+    transform: translateY(-9%) scale(1.16);
+  }
+  50% {
+    transform: translateY(-14%) scale(1.2);
+  }
+}
+
+.chess-held {
+  animation: chess-held 900ms ease-in-out infinite;
+  transform-origin: 50% 100%;
+}
+
+/* A square you may move to, pulsing under the piece rather than over it. */
+@keyframes chess-tile-hint {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.86);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.chess-tile-hint {
+  animation: chess-tile-hint 1.25s ease-in-out infinite;
+}
+
+/* Whose go it is, ticking along the rail. */
+@keyframes chess-rail-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0.25;
+  }
+}
+
+.chess-rail-blink {
+  animation: chess-rail-blink 1s steps(1, end) infinite;
+}
+
+/* Everything above is decoration. Turn all of it off for anyone who has asked
+   for less movement — the game plays identically without it. */
+@media (prefers-reduced-motion: reduce) {
+  .chess-pop,
+  .chess-throb,
+  .chess-burst,
+  .chess-pip-bob,
+  .chess-pip-cheer,
+  .chess-speech,
+  .chess-beacon,
+  .chess-drift,
+  .chess-confetti,
+  .chess-sticker-in,
+  .chess-rise,
+  .chess-idle,
+  .chess-held,
+  .chess-tile-hint,
+  .chess-rail-blink,
+  [class*="chess-travel-"],
+  [class*="chess-victim-"] {
+    animation: none !important;
+  }
+
+  /* The blink is the one animation that must keep its END state rather than be
+     switched off: with no animation at all, the open eye and the shut lid would
+     both be painted and every piece would look glued shut. */
+  .chess-eye-open {
+    animation: none !important;
+    opacity: 1;
+  }
+  .chess-eye-shut {
+    animation: none !important;
+    opacity: 0;
+  }
+
+  /* Hints still have to be findable when they aren't allowed to pulse. */
+  .chess-tile-hint {
+    opacity: 1;
+  }
+  .chess-rail-blink {
+    opacity: 1;
+  }
+
+  /* Confetti falls from off-screen, so with no animation it must not sit there. */
+  .chess-confetti {
+    display: none;
+  }
+
+  /* These two finish invisible, so without the animation they must start that
+     way or a taken piece would sit on the board for ever. */
+  .chess-burst,
+  [class*="chess-victim-"] {
+    opacity: 0;
+  }
+
+  /* Beats the per-piece duration set inline. */
+  .chess-piece {
+    transition-duration: 1ms !important;
+  }
+}
+
+/* Pieces taking their places at the start of a game. */
+@keyframes chess-arrive {
+  0% {
+    transform: translateY(-40%) scale(0.4);
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(6%) scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.chess-arrive {
+  animation: chess-arrive 420ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chess-arrive {
+    animation: none !important;
   }
 }
